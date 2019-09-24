@@ -1,0 +1,80 @@
+@import "../editor-variables.less";
+
+body {
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    font-size: @text-size;
+    // line-height: 1.6em;
+}
+
+.cdx-block {
+    height: auto;
+    vertical-align: middle;
+    // border-radius: 10px;
+}
+.ce-block {
+    border-bottom: 1px solid @block-border;
+}
+.ce-block--focused {
+    background-image: none;
+}
+h1[contenteditable].ce-header {
+    min-height: 48px;
+}
+h2[contenteditable].ce-header {
+    min-height: 36px;
+}
+h3[contenteditable].ce-header {
+    min-height: 28.0833px;
+}
+h4[contenteditable].ce-header {
+    min-height: 24px;
+}
+.cdx-input {
+    min-height: 19px;
+    box-sizing: content-box;
+}
+#article-title {
+    // min-height: 48px;
+    font-size: 48px;
+    width: 650px;
+    line-height: 1.6em;
+    outline:none;
+    -webkit-appearance: none;
+    border: none;
+    // border-bottom: 1px solid @block-border;
+    // margin-bottom: 20px;
+}
+#article-title:focus {
+    outline:none;
+}
+.hr {
+    width: 100%;
+    height: 1px;
+    margin-bottom: 30px;
+    background-color: @block-border;
+}
+.page-center {
+    display: flex;
+    
+    justify-content: center;
+    width: 100%;
+}
+.page-right {
+    display: flex;
+    
+    justify-content: flex-end;
+    width: 100%;
+}
+#article-title[contenteditable=true]:empty:not(:focus) {
+    content: attr(data-placeholder);
+    color: @inactive-text;
+    font-weight: normal;
+
+}
+[contenteditable=true] {
+    -moz-user-select: text;
+-khtml-user-select: text;
+-webkit-user-select: text;
+-o-user-select: text;
+}

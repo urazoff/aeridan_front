@@ -1,0 +1,23 @@
+@import "../editor-variables.less";
+
+// @button-color: rgb(152, 205, 255);
+@button-color: white;
+@button-text-color: @inactive-text;
+
+.button {
+    padding: 8px 18px;
+    border: 1px solid darken(@button-color, 10%);
+    border-radius: 10px;
+    color: darken(@button-text-color, 10%);
+    font-weight: 500;
+    background-color: @button-color;
+    margin: 4px;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 5%);
+}
+.button:hover {
+    cursor:pointer;
+    // color: darken(@button-text-color,10%);
+    background-color: darken(@button-color, 2%);
+    border: 1px solid darken(@button-color, 15%);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 10%);
+}
