@@ -1,1 +1,7 @@
-<p>article-renderer works!</p>
+<div [ngClass]="{'title': true}">
+    <h1>{{article.layout.title}}</h1>
+</div>
+<div [ngClass]="{'publication-date': true}">
+    {{article.createdAt}}
+</div>
+<div></div>
