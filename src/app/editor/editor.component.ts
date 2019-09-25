@@ -8,7 +8,8 @@ import List from '@editorjs/list';
 import Quote from '@editorjs/quote';
 import Table from '@editorjs/table';
 import { ArticleDataService } from '../article-data.service';
-
+import { IArticleLayout, IArticle } from '../interfaces/IArticle';
+import { IArticleRequest } from '../interfaces/IArticleRequest';
 @Component({
   selector: 'app-editor',
   templateUrl: './editor.component.html',
@@ -23,7 +24,7 @@ export class EditorComponent implements OnInit {
 
   ngOnInit() {
     this.editor = new EditorJS({
-      holderId: 'article-editor',
+      holder: 'article-editor',
       placeholder: 'Let`s write an awesome story!',
       tools: {
         header: {
@@ -64,20 +65,35 @@ export class EditorComponent implements OnInit {
         Number(( el as HTMLElement).style.fontSize) * Number(( el as HTMLElement).style.lineHeight));
     });
   }
+
+  /**
+   * Сохраняет статью, добавляет к ней заголовок и отправляет на сервер.
+   * В случае ошибки - сохраняет текст ошибки в `this.error`, выводит объект ошибки в консоль.
+   * @param title Заголовок статьи.
+   */
   publicate(title = this.title) {
-    const self = this;
     this.error = '';
     this.editor.save().then((article) => {
-      article.title = title;
-      this.httpService.send(article)
+      return new Promise( (resolve, reject) => {
+      const articleLayout: IArticleLayout = {
+        title,
+        time: article.time,
+        blocks: article.blocks,
+        version: article.version
+      };
+      const articleRequest: IArticleRequest = {
+        layout: articleLayout,
+        owner: 1
+      };
+      this.httpService.send(articleRequest)
         .subscribe(
-          (data: object) => { },
-          error => { self.error = error.message; throw error; }
+          (data: IArticle) => { resolve(data); },
+          error => { reject(error); }
         );
-    }).catch((error: Error) => {
+    });
+  }).catch((error: Error) => {
       console.log('Saving failed', error);
-      self.error = error.message;
-      console.log(self);
+      this.error = error.message;
     });
     // console.log(this.error)
   }

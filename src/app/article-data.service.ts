@@ -1,14 +1,17 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClientModule, HttpClient }   from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArticleDataService {
   constructor(private http: HttpClient) { }
-
-  send(articleObject: Object) {
-    articleObject["type"]="article";
-    return this.http.post("test", articleObject);
+  /**
+   * Отправляет POST-запрос на сервер с объектом статьи.
+   * @param articleObject Объект статьи. Содержит блоки и заголовок.
+   * @returns An `Observable` of the response, with the response body as a JSON object.
+   */
+  send(articleObject: object) {
+    return this.http.post('https://dilshod.xyz/article', articleObject);
   }
 }
