@@ -12,6 +12,7 @@ import { EditorPageComponent } from './editor-page/editor-page.component';
 import { ArticlePageComponent } from './article-page/article-page.component';
 import { PageBlockComponent } from './page-block/page-block.component';
 import { ArticleRendererComponent } from './article-renderer/article-renderer.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ArticleRendererComponent } from './article-renderer/article-renderer.co
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [HttpClientModule, HttpClient],
   bootstrap: [AppComponent]
