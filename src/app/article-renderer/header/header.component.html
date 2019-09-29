@@ -1,12 +1,12 @@
-<div [ngClass]="block">
+<div [ngClass]="{'block': true}">
   <div ngSwitch="data.level">
-    <h2 [ngClass]="header" *ngSwitchCase="2">
+    <h2 [ngClass]="{'header': true}" *ngSwitchCase="2">
       {{data.text}}
     </h2>
-    <h3 [ngClass]="header" *ngSwitchCase="3">
+    <h3 [ngClass]="{'header': true}" *ngSwitchCase="3">
       {{data.text}}
     </h3>
-    <h4 [ngClass]="header" *ngSwitchCase="4">
+    <h4 [ngClass]="{'header': true}" *ngSwitchCase="4">
       {{data.text}}
     </h4>
   </div>
