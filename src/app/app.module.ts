@@ -12,6 +12,14 @@ import { EditorPageComponent } from './editor-page/editor-page.component';
 import { ArticlePageComponent } from './article-page/article-page.component';
 import { PageBlockComponent } from './page-block/page-block.component';
 import { ArticleRendererComponent } from './article-renderer/article-renderer.component';
+import { HeaderComponent } from './article-renderer/header/header.component';
+import { ParagraphComponent } from './article-renderer/paragraph/paragraph.component';
+import { TableComponent } from './article-renderer/table/table.component';
+import { LinkComponent } from './article-renderer/link/link.component';
+import { ImageComponent } from './article-renderer/image/image.component';
+import { ListComponent } from './article-renderer/list/list.component';
+import { QuoteComponent } from './article-renderer/quote/quote.component';
+import { EmbedComponent } from './article-renderer/embed/embed.component';
 import {FormsModule} from '@angular/forms';
 
 @NgModule({
@@ -25,6 +33,14 @@ import {FormsModule} from '@angular/forms';
     ArticlePageComponent,
     PageBlockComponent,
     ArticleRendererComponent,
+    HeaderComponent,
+    ParagraphComponent,
+    TableComponent,
+    LinkComponent,
+    ImageComponent,
+    ListComponent,
+    QuoteComponent,
+    EmbedComponent,
   ],
   imports: [
     BrowserModule,

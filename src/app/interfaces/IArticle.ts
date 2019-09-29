@@ -1,7 +1,9 @@
+import {IArticleBlock} from "./iarticle-block";
+
 export interface IArticleLayout {
     title: string;
     time: number;
-    blocks: Array<object>;
+    blocks: Array<IArticleBlock>;
     version: string;
 }
 export interface IArticle {

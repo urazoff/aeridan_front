@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import EditorJS from '@editorjs/editorjs';
 import Embed from '@editorjs/embed';
 import Header from '@editorjs/header';
@@ -7,9 +7,10 @@ import Link from '@editorjs/link';
 import List from '@editorjs/list';
 import Quote from '@editorjs/quote';
 import Table from '@editorjs/table';
-import { ArticleDataService } from '../article-data.service';
-import { IArticleLayout, IArticle } from '../interfaces/IArticle';
-import { IArticleRequest } from '../interfaces/IArticleRequest';
+import {ArticleDataService} from '../article-data.service';
+import {IArticleLayout, IArticle} from '../interfaces/IArticle';
+import {IArticleRequest} from '../interfaces/IArticleRequest';
+
 @Component({
   selector: 'app-editor',
   templateUrl: './editor.component.html',
@@ -18,7 +19,10 @@ import { IArticleRequest } from '../interfaces/IArticleRequest';
 })
 export class EditorComponent implements OnInit {
   editor: EditorJS;
-  constructor(private httpService: ArticleDataService) { }
+
+  constructor(private httpService: ArticleDataService) {
+  }
+
   error = '';
   title: string;
 
@@ -27,12 +31,10 @@ export class EditorComponent implements OnInit {
       holder: 'article-editor',
       placeholder: 'Let`s write an awesome story!',
       tools: {
-        header: {
+        heading: {
           class: Header,
-          inlineToolbar: ['link'],
           config: {
             placeholder: 'Header',
-            tags: ['H2', 'H3', 'H4']
           }
         },
         list: {
@@ -61,8 +63,8 @@ export class EditorComponent implements OnInit {
     const parent = document.querySelector('#' + element);
     const contenteditableElements = parent.querySelectorAll('[contenteditable="true"]');
     contenteditableElements.forEach(el => {
-      ( el as HTMLElement).style.minHeight = String(
-        Number(( el as HTMLElement).style.fontSize) * Number(( el as HTMLElement).style.lineHeight));
+      (el as HTMLElement).style.minHeight = String(
+        Number((el as HTMLElement).style.fontSize) * Number((el as HTMLElement).style.lineHeight));
     });
   }
 
@@ -74,24 +76,31 @@ export class EditorComponent implements OnInit {
   publicate(title = this.title) {
     this.error = '';
     this.editor.save().then((article) => {
-      return new Promise( (resolve, reject) => {
-      const articleLayout: IArticleLayout = {
-        title,
-        time: article.time,
-        blocks: article.blocks,
-        version: article.version
-      };
-      const articleRequest: IArticleRequest = {
-        layout: articleLayout,
-        owner: 1
-      };
-      this.httpService.send(articleRequest)
-        .subscribe(
-          (data: IArticle) => { resolve(data); },
-          error => { reject(error); }
-        );
-    });
-  }).catch((error: Error) => {
+      return new Promise((resolve, reject) => {
+        const articleLayout: IArticleLayout = {
+          title,
+          time: article.time,
+          blocks: article.blocks,
+          version: article.version
+        };
+        const articleRequest: IArticleRequest = {
+          layout: articleLayout,
+          owner: 1
+        };
+        console.log(articleRequest);
+        this.httpService.send(articleRequest)
+          .subscribe(
+            (data: IArticle) => {
+              resolve(data);
+            },
+            error => {
+              reject(error);
+            }
+          );
+      });
+    }).then((result) => {
+      console.log(result);
+    }).catch((error: Error) => {
       console.log('Saving failed', error);
       this.error = error.message;
     });
