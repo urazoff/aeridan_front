@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import {IArticle} from '../interfaces/IArticle';
+import {ArticleDataService} from '../article-data.service';
 
 @Component({
   selector: 'app-article-page',
@@ -9,14 +11,31 @@ import { Subscription } from 'rxjs';
 })
 export class ArticlePageComponent implements OnInit {
   id: number;
+  data: IArticle;
   private subscription: Subscription;
+  private querySubscription: Subscription;
 
-  constructor(private activatedRoute: ActivatedRoute) {
+  constructor(private activatedRoute: ActivatedRoute, private httpService: ArticleDataService) {
     this.subscription = this.activatedRoute.params.subscribe(params => this.id = params.id);
+    // this.querySubscription = this.activatedRoute.queryParams.subscribe(
+    //   (queryParam: any) => {
+    //     this.data = queryParam.data;
+    //   }
+    // );
   }
 
   ngOnInit() {
-
+    if (!this.data) {
+      this.httpService.get(this.id)
+        .subscribe(
+          (data: IArticle) => {
+            this.data = data;
+          },
+          error => {
+            console.log(error);
+          }
+        );
+    }
   }
 
 }

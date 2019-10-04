@@ -1,5 +1,14 @@
 <div [ngClass]="{'block': true}">
-  <ul>
-
-  </ul>
+  <div ngSwitch="data.style">
+    <ol [ngClass]="{'header': true}" *ngSwitchCase="'ordered'">
+      <li *ngFor="let item of data.items">
+        {{item}}
+      </li>
+    </ol>
+    <ul [ngClass]="{'header': true}" *ngSwitchCase="'unordered'">
+      <li *ngFor="let item of data.items">
+        {{item}}
+      </li>
+    </ul>
+  </div>
 </div>

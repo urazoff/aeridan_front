@@ -1,6 +1,8 @@
 <app-warning-block *ngIf="error.length>0">{{error}}</app-warning-block>
 <div class="page-right"><app-button (onClick)="publicate()">Publicate</app-button></div>
 
-<div class="page-center"><input id="article-title" placeholder="Write a title" [(ngModel)]="title"></div>
-<div class="hr"></div>
+<div class="page-center">
+  <app-multiline-input id="article-title" [placeholder]="'Write a title'" (valueChanged)="onTitleChanged($event)"></app-multiline-input>
+</div>
+<!--<div class="hr"></div>-->
 <div id="article-editor"></div>

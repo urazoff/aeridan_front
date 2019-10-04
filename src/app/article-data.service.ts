@@ -12,6 +12,9 @@ export class ArticleDataService {
    * @returns An `Observable` of the response, with the response body as a JSON object.
    */
   send(articleObject: object) {
-    return this.http.post('https://dilshod.xyz/article', articleObject);
+    return this.http.post('https://dilshod.xyz/api/v1/article', articleObject);
+  }
+  get(id: number) {
+    return this.http.get(`https://dilshod.xyz/api/v1/article/${id}`);
   }
 }

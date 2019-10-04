@@ -11,6 +11,6 @@ export interface IArticle {
     updatedAt: number;
     id: number;
     layout: IArticleLayout;
-    owner: number;
+    owner: object;
 }
 

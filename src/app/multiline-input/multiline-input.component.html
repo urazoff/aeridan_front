@@ -1,0 +1,5 @@
+<div [ngClass]="'shell'">
+  <div #writeArea (input)="onInput($event)"
+       [ngClass]="'write-area'" contenteditable="true" [attr.placeholder]="placeholder">
+  </div>
+</div>

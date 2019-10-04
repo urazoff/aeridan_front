@@ -2,6 +2,12 @@ import {Component, OnInit, Input, ViewChild, ComponentFactoryResolver, ElementRe
 import { IArticle } from '../interfaces/IArticle';
 import {HeaderComponent} from './header/header.component';
 import {ImageComponent} from './image/image.component';
+import {ListComponent} from "./list/list.component";
+import {ParagraphComponent} from "./paragraph/paragraph.component";
+import {QuoteComponent} from "./quote/quote.component";
+import {TableComponent} from "./table/table.component";
+import {LinkComponent} from "./link/link.component";
+import {EmbedComponent} from "./embed/embed.component";
 
 @Component({
   selector: 'app-article-renderer',
@@ -13,8 +19,14 @@ export class ArticleRendererComponent implements OnInit {
   @Input() article: IArticle;
   @ViewChild('articleContent', {static: false}) articleContent;
   componentToTypeDict: object = {
-    header: HeaderComponent,
-    image: ImageComponent
+    heading: HeaderComponent,
+    image: ImageComponent,
+    list: ListComponent,
+    paragraph: ParagraphComponent,
+    quote: QuoteComponent,
+    table: TableComponent,
+    link: LinkComponent,
+    embed: EmbedComponent
   };
   constructor(private componentFactoryResolver: ComponentFactoryResolver) { }
   ngOnInit(): void {

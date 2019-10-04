@@ -10,6 +10,9 @@ import Table from '@editorjs/table';
 import {ArticleDataService} from '../article-data.service';
 import {IArticleLayout, IArticle} from '../interfaces/IArticle';
 import {IArticleRequest} from '../interfaces/IArticleRequest';
+import {Router} from '@angular/router';
+import {HeaderT} from './plugin-extension';
+import {IHeaderTag} from "./interfaces/iheader-tag";
 
 @Component({
   selector: 'app-editor',
@@ -20,7 +23,7 @@ import {IArticleRequest} from '../interfaces/IArticleRequest';
 export class EditorComponent implements OnInit {
   editor: EditorJS;
 
-  constructor(private httpService: ArticleDataService) {
+  constructor(private httpService: ArticleDataService, private router: Router) {
   }
 
   error = '';
@@ -34,7 +37,7 @@ export class EditorComponent implements OnInit {
         heading: {
           class: Header,
           config: {
-            placeholder: 'Header',
+            placeholder: 'Enter header',
           }
         },
         list: {
@@ -73,10 +76,14 @@ export class EditorComponent implements OnInit {
    * В случае ошибки - сохраняет текст ошибки в `this.error`, выводит объект ошибки в консоль.
    * @param title Заголовок статьи.
    */
+  onTitleChanged(title: string) {
+    this.title = title;
+  }
   publicate(title = this.title) {
     this.error = '';
     this.editor.save().then((article) => {
       return new Promise((resolve, reject) => {
+        // this.editor.render(article).then(result => console.log('Rendered', result));
         const articleLayout: IArticleLayout = {
           title,
           time: article.time,
@@ -98,12 +105,18 @@ export class EditorComponent implements OnInit {
             }
           );
       });
-    }).then((result) => {
-      console.log(result);
+    }).then((data: IArticle) => {
+      this.router.navigate(
+        ['/article', data.id],
+      );
     }).catch((error: Error) => {
       console.log('Saving failed', error);
       this.error = error.message;
     });
     // console.log(this.error)
+  }
+
+  preview() {
+
   }
 }
