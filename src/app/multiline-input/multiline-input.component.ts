@@ -7,7 +7,7 @@ import {AfterViewInit, Component, EventEmitter, Input, OnInit, Output, ViewChild
 })
 export class MultilineInputComponent implements OnInit, AfterViewInit {
   @Input() placeholder: string;
-  value: string = '';
+  value = '';
   @Output() valueChanged: EventEmitter<string> = new EventEmitter<string>();
   @ViewChild('writeArea', {static: false}) writeArea;
   // @Input() textStyle: StyleSheet;
@@ -22,10 +22,21 @@ export class MultilineInputComponent implements OnInit, AfterViewInit {
     const trimmedText = event.target.textContent.trim();
     if (trimmedText === '') { event.target.textContent = ''; }
   }
+  clearHTML(text: string) {
+    const dict = {
+      '<': '&lt;',
+      '>': '&gt;'
+    };
+
+    Object.keys(dict).forEach((el) => {
+      text = text.replace(new RegExp(el, 'gm'), dict[el]);
+    });
+    return text;
+  }
   onInput(event) {
     try {
       this.trimEmpty(event);
-      this.value = event.target.textContent;
+      this.value = this.clearHTML(event.target.textContent);
       this.valueChanged.emit(this.value);
     } catch (e) {
       console.log(e);

@@ -16,16 +16,21 @@ export class ArticlePageComponent implements OnInit {
   private querySubscription: Subscription;
 
   constructor(private activatedRoute: ActivatedRoute, private httpService: ArticleDataService) {
-    this.subscription = this.activatedRoute.params.subscribe(params => this.id = params.id);
+    this.subscription = this.activatedRoute.params.subscribe(params => {
+      try {
+        this.id = params.id;
+        this.getArticle(this.id);
+      } catch (e) {
+        console.log(e);
+      }
+    });
     // this.querySubscription = this.activatedRoute.queryParams.subscribe(
     //   (queryParam: any) => {
     //     this.data = queryParam.data;
     //   }
     // );
   }
-
-  ngOnInit() {
-    if (!this.data) {
+  getArticle(id: number) {
       this.httpService.get(this.id)
         .subscribe(
           (data: IArticle) => {
@@ -35,7 +40,8 @@ export class ArticlePageComponent implements OnInit {
             console.log(error);
           }
         );
-    }
+  }
+  ngOnInit() {
   }
 
 }

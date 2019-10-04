@@ -51,6 +51,16 @@ import { MultilineInputComponent } from './multiline-input/multiline-input.compo
     FormsModule
   ],
   providers: [HttpClientModule, HttpClient],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    HeaderComponent,
+    ParagraphComponent,
+    TableComponent,
+    LinkComponent,
+    ImageComponent,
+    ListComponent,
+    QuoteComponent,
+    EmbedComponent,
+  ]
 })
 export class AppModule { }
