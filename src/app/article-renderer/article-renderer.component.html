@@ -3,7 +3,7 @@
     <h1 [ngClass]="{'title': true}">{{article?.layout.title}}</h1>
 </div>
 <div [ngClass]="{'publication-date': true}">
-    {{article?.createdAt}}
+    {{article?.createdAt | date : 'shortDate'}}
 </div>
 <div [ngClass]="{'article-content': true}" #articleContent>
   <div *ngFor="let block of article.layout.blocks">
