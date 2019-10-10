@@ -1,14 +1,12 @@
-<div [ngClass]="{'block': true}">
-  <div ngSwitch="data.style">
-    <ol [ngClass]="{'header': true}" *ngSwitchCase="'ordered'">
-      <li *ngFor="let item of data.items">
-        {{item}}
-      </li>
-    </ol>
-    <ul [ngClass]="{'header': true}" *ngSwitchCase="'unordered'">
-      <li *ngFor="let item of data.items">
-        {{item}}
-      </li>
-    </ul>
-  </div>
+<div [ngSwitch]="data.style">
+  <ol [ngClass]="{'list': true}" *ngSwitchCase="'ordered'">
+    <li *ngFor="let item of data.items">
+      <div [innerHTML]="item"></div>
+    </li>
+  </ol>
+  <ul [ngClass]="{'list': true}" *ngSwitchCase="'unordered'">
+    <li *ngFor="let item of data.items">
+      <div [innerHTML]="item"></div>
+    </li>
+  </ul>
 </div>
