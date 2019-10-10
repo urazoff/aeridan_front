@@ -1,11 +1,38 @@
-<div *ngIf="article">
-<div [ngClass]="{'title': true}">
-    <h1>{{article.layout.title}}</h1>
+<div>
+<div [ngClass]="'title-block'">
+    <h1 [ngClass]="{'title': true}">{{article?.layout.title}}</h1>
 </div>
 <div [ngClass]="{'publication-date': true}">
-    {{article.createdAt}}
+    {{article?.createdAt}}
 </div>
 <div [ngClass]="{'article-content': true}" #articleContent>
-
+  <div *ngFor="let block of article.layout.blocks">
+    <div [ngSwitch]="block.type" [ngClass]="'article-block'">
+      <div *ngSwitchCase="'heading'">
+        <app-header [data]="block.data"></app-header>
+      </div>
+      <div *ngSwitchCase="'image'">
+        <app-image [data]="block.data"></app-image>
+      </div>
+      <div *ngSwitchCase="'list'">
+        <app-list [data]="block.data"></app-list>
+      </div>
+      <div *ngSwitchCase="'quote'">
+        <app-quote [data]="block.data"></app-quote>
+      </div>
+      <div *ngSwitchCase="'table'">
+        <app-table [data]="block.data"></app-table>
+      </div>
+      <div *ngSwitchCase="'link'">
+        <app-link [data]="block.data"></app-link>
+      </div>
+      <div *ngSwitchCase="'embed'">
+        <app-embed [data]="block.data"></app-embed>
+      </div>
+      <div *ngSwitchCase="'paragraph'">
+        <app-paragraph [data]="block.data"></app-paragraph>
+      </div>
+    </div>
+  </div>
 </div>
 </div>

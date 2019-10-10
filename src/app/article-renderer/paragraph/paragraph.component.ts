@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {IArticleParagraph} from '../interfaces/iarticle-paragraph';
 
 @Component({
   selector: 'app-paragraph',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./paragraph.component.less']
 })
 export class ParagraphComponent implements OnInit {
-
+  @Input() data: IArticleParagraph;
   constructor() { }
 
   ngOnInit() {

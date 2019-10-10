@@ -1,1 +1,7 @@
-<p>quote works!</p>
+<div [ngClass]="'quote'">
+  <div [innerHTML]="data.text"></div>
+  <div [ngClass]="{
+  'caption':true,
+  'center-align': data.alignment === 'center'
+  }">{{data.caption}}</div>
+</div>

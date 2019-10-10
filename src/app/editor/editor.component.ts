@@ -12,7 +12,8 @@ import {IArticleLayout, IArticle} from '../interfaces/IArticle';
 import {IArticleRequest} from '../interfaces/IArticleRequest';
 import {Router} from '@angular/router';
 import {HeaderT} from './plugin-extension';
-import {IHeaderTag} from "./interfaces/iheader-tag";
+import {IHeaderTag} from './interfaces/iheader-tag';
+import {EmptyArticleBlocksError, EmptyTitleError} from '../errors/ArticleSaveErrors';
 
 @Component({
   selector: 'app-editor',
@@ -72,13 +73,31 @@ export class EditorComponent implements OnInit {
   }
 
   /**
-   * Сохраняет статью, добавляет к ней заголовок и отправляет на сервер.
-   * В случае ошибки - сохраняет текст ошибки в `this.error`, выводит объект ошибки в консоль.
-   * @param title Заголовок статьи.
+   * Событие для присваивания нового значения заголовка при его изменении.
+   * @param title Заголовок статьи (событие)
    */
   onTitleChanged(title: string) {
     this.title = title;
   }
+
+  /**
+   * Проверяет статью на готовность к отправке.
+   * @param articleLayout Layout статьи.
+   */
+  validate(articleLayout: IArticleLayout) {
+    if (articleLayout.title.trim() === '') {
+      throw new EmptyTitleError();
+    }
+    if (articleLayout.blocks.length === 0) {
+      throw new EmptyArticleBlocksError();
+    }
+  }
+
+  /**
+   * Сохраняет статью, добавляет к ней заголовок и отправляет на сервер.
+   * В случае ошибки - сохраняет текст ошибки в `this.error`, выводит объект ошибки в консоль.
+   * @param title Заголовок статьи.
+   */
   publicate(title = this.title) {
     this.error = '';
     this.editor.save().then((article) => {
@@ -90,6 +109,7 @@ export class EditorComponent implements OnInit {
           blocks: article.blocks,
           version: article.version
         };
+        this.validate(articleLayout);
         const articleRequest: IArticleRequest = {
           layout: articleLayout,
           owner: 1

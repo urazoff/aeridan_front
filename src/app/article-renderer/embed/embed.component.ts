@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {IArticleHeader} from '../interfaces/iarticle-header';
 
 @Component({
   selector: 'app-embed',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./embed.component.less']
 })
 export class EmbedComponent implements OnInit {
-
+  @Input() data: object;
   constructor() { }
 
   ngOnInit() {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import {IArticle} from '../interfaces/IArticle';
@@ -12,17 +12,21 @@ import {ArticleDataService} from '../article-data.service';
 export class ArticlePageComponent implements OnInit {
   id: number;
   data: IArticle;
+  isArticleReceived: boolean = false;
   private subscription: Subscription;
-  private querySubscription: Subscription;
-
+  // @ViewChild('articleContainer') articleContainer: TemplateRef;
   constructor(private activatedRoute: ActivatedRoute, private httpService: ArticleDataService) {
-    this.subscription = this.activatedRoute.params.subscribe(params => {
-      try {
+    const idProm = new Promise((resolve, reject) => {
+      this.subscription = this.activatedRoute.params.subscribe(params => {
         this.id = params.id;
-        this.getArticle(this.id);
-      } catch (e) {
-        console.log(e);
-      }
+        resolve(params.id);
+      });
+    });
+    idProm.then((id: number) => {
+      return this.getArticle(id).then((data: IArticle) => {
+        this.data = data;
+        this.isArticleReceived = true;
+      });
     });
     // this.querySubscription = this.activatedRoute.queryParams.subscribe(
     //   (queryParam: any) => {
@@ -31,15 +35,17 @@ export class ArticlePageComponent implements OnInit {
     // );
   }
   getArticle(id: number) {
+    return new Promise((resolve, reject) => {
       this.httpService.get(this.id)
         .subscribe(
           (data: IArticle) => {
-            this.data = data;
+            resolve(data);
           },
           error => {
-            console.log(error);
+            reject(error);
           }
         );
+    });
   }
   ngOnInit() {
   }

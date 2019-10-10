@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {IArticleQuote} from '../interfaces/iarticle-quote';
 
 @Component({
   selector: 'app-quote',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./quote.component.less']
 })
 export class QuoteComponent implements OnInit {
-
+  @Input() data: IArticleQuote;
   constructor() { }
 
   ngOnInit() {

@@ -15,6 +15,6 @@ export class ArticleDataService {
     return this.http.post('https://dilshod.xyz/api/v1/article', articleObject);
   }
   get(id: number) {
-    return this.http.get(`https://dilshod.xyz/api/v1/article/${id}`);
+    return this.http.get(`https://dilshod.xyz/api/v1/article/get/${id}`);
   }
 }

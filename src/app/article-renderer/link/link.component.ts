@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-link',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./link.component.less']
 })
 export class LinkComponent implements OnInit {
-
+  @Input() data: object;
   constructor() { }
 
   ngOnInit() {

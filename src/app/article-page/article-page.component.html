@@ -1,4 +1,7 @@
 <app-page-block>
-    <p>article-page works! {{id}}</p>
-  <app-article-renderer [article]="data"></app-article-renderer>
+  <div [ngClass]="'page-center'">
+    <div [ngClass]="'article'" *ngIf="isArticleReceived">
+      <app-article-renderer [article]="data"></app-article-renderer>
+    </div>
+  </div>
 </app-page-block>

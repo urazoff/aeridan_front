@@ -1,13 +1,16 @@
-<div [ngClass]="{'block': true}">
-  <div ngSwitch="data.level">
-    <h2 [ngClass]="{'header': true}" *ngSwitchCase="2">
-      {{data.text}}
-    </h2>
-    <h3 [ngClass]="{'header': true}" *ngSwitchCase="3">
-      {{data.text}}
-    </h3>
-    <h4 [ngClass]="{'header': true}" *ngSwitchCase="4">
-      {{data.text}}
-    </h4>
+<div >
+  <div [ngSwitch]="data.level">
+    <ng-template ngSwitchCase="2"><h2 [ngClass]="{'header': true}" >
+      {{data?.text}}
+    </h2></ng-template>
+
+    <ng-template ngSwitchCase="3"><h3 [ngClass]="{'header': true}">
+      {{data?.text}}
+    </h3></ng-template>
+
+    <ng-template ngSwitchCase="4"><h4 [ngClass]="{'header': true}">
+      {{data?.text}}
+    </h4></ng-template>
+
   </div>
 </div>
