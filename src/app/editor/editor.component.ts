@@ -127,7 +127,7 @@ export class EditorComponent implements OnInit {
       });
     }).then((data: IArticle) => {
       this.router.navigate(
-        ['/article', data.id],
+        ['/articles', data.id],
       );
     }).catch((error: Error) => {
       console.log('Saving failed', error);
