@@ -24,7 +24,6 @@ import {FormsModule} from '@angular/forms';
 import { MultilineInputComponent } from './multiline-input/multiline-input.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,

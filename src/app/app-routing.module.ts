@@ -8,12 +8,12 @@ import {NotFoundComponent} from './not-found/not-found.component';
 const routes: Routes = [
   { path: '', component: EditorPageComponent },
   { path: 'articles/:id', component: ArticlePageComponent },
+  { path: 'notfound', component: NotFoundComponent },
   { path: '**', component: NotFoundComponent },
-  { path: 'notfound', component: NotFoundComponent }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  imports: [RouterModule.forRoot(routes, )],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
