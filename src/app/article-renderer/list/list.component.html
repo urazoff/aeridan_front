@@ -1,11 +1,11 @@
 <div [ngSwitch]="data.style">
   <ol [ngClass]="{'list': true}" *ngSwitchCase="'ordered'">
-    <li *ngFor="let item of data.items">
+    <li *ngFor="let item of data.items" [ngClass]="'item'">
       <div [innerHTML]="item"></div>
     </li>
   </ol>
   <ul [ngClass]="{'list': true}" *ngSwitchCase="'unordered'">
-    <li *ngFor="let item of data.items">
+    <li *ngFor="let item of data.items" [ngClass]="'item'">
       <div [innerHTML]="item"></div>
     </li>
   </ul>
