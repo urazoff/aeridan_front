@@ -22,6 +22,7 @@ import { QuoteComponent } from './article-renderer/quote/quote.component';
 import { EmbedComponent } from './article-renderer/embed/embed.component';
 import {FormsModule} from '@angular/forms';
 import { MultilineInputComponent } from './multiline-input/multiline-input.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { MultilineInputComponent } from './multiline-input/multiline-input.compo
     QuoteComponent,
     EmbedComponent,
     MultilineInputComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
