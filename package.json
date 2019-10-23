@@ -19,6 +19,7 @@
     "@angular/platform-browser": "~8.1.2",
     "@angular/platform-browser-dynamic": "~8.1.2",
     "@angular/router": "~8.1.2",
+    "ng-rn": "^1.0.0",
     "package-lock.json": "^1.0.0",
     "package.json": "^2.0.1",
     "rxjs": "~6.4.0",

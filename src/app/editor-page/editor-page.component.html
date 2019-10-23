@@ -1,3 +1,3 @@
-<app-page-block>
-    <app-editor></app-editor>
+<app-page-block *ngIf="isArticleReceived || id === undefined">
+    <app-editor [data]="data"></app-editor>
 </app-page-block>

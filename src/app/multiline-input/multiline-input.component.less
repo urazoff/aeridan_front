@@ -1,17 +1,11 @@
-@import '../editor-variables';
-@import '../less/mixins/text-wrapping-hyphens';
-.shell {
-  line-height: 1.6em;
+.input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  outline: 0;
+  box-shadow: none;
+  border: 0px solid white;
+  font-size: inherit;
+  font-family: inherit;
 }
-.write-area {
-  min-height: 24px;
-  outline: none;
-  .mxn-hyphens(auto);
-  .mxn-word-wrap(break-word);
-}
-
-.write-area[contenteditable=true]:not(:focus):empty:before {
-  content: attr(placeholder);
-  color: @inactive-text;
-}
-

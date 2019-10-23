@@ -1,4 +1,4 @@
-import {IArticleBlock} from "./iarticle-block";
+import {IArticleBlock} from './iarticle-block';
 
 export interface IArticleLayout {
     title: string;

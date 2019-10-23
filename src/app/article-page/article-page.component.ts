@@ -15,7 +15,7 @@ export class ArticlePageComponent implements OnInit {
   isArticleReceived: boolean = false;
   private subscription: Subscription;
   // @ViewChild('articleContainer') articleContainer: TemplateRef;
-  constructor(private activatedRoute: ActivatedRoute, private httpService: ArticleDataService, private router: Router) {
+  constructor(private activatedRoute: ActivatedRoute, private articleDataService: ArticleDataService, private router: Router) {
     const idProm = new Promise((resolve, reject) => {
       this.subscription = this.activatedRoute.params.subscribe(params => {
         this.id = params.id;
@@ -23,7 +23,7 @@ export class ArticlePageComponent implements OnInit {
       });
     });
     idProm.then((id: number) => {
-      return this.getArticle(id).then((data: IArticle) => {
+      return this.articleDataService.getArticle(id).then((data: IArticle) => {
         this.data = data;
         this.isArticleReceived = true;
       }).catch((error) => {
@@ -38,20 +38,12 @@ export class ArticlePageComponent implements OnInit {
     //   }
     // );
   }
-  getArticle(id: number) {
-    return new Promise((resolve, reject) => {
-      this.httpService.get(this.id)
-        .subscribe(
-          (data: IArticle) => {
-            resolve(data);
-          },
-          error => {
-            reject(error);
-          }
-        );
-    });
-  }
   ngOnInit() {
+  }
+  navigateToEdit() {
+    this.router.navigate(
+      ['/edit' + `/${this.id}`],
+    );
   }
 
 }

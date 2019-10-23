@@ -116,7 +116,6 @@ export class ArticleRendererComponent implements OnInit, AfterViewChecked {
 
   ngAfterViewChecked() {
 
-    console.log(this.article);
     // if (this.article !== undefined) {
     // this.generateArticle();
     // }

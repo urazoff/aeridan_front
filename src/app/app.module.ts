@@ -21,8 +21,9 @@ import { ListComponent } from './article-renderer/list/list.component';
 import { QuoteComponent } from './article-renderer/quote/quote.component';
 import { EmbedComponent } from './article-renderer/embed/embed.component';
 import {FormsModule} from '@angular/forms';
-import { MultilineInputComponent } from './multiline-input/multiline-input.component';
+import { MultilineInputDivComponent } from './multiline-input-div/multiline-input-div.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { MultilineInputComponent } from './multiline-input/multiline-input.component';
 
 @NgModule({
   declarations: [
@@ -43,8 +44,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
     ListComponent,
     QuoteComponent,
     EmbedComponent,
-    MultilineInputComponent,
+    MultilineInputDivComponent,
     NotFoundComponent,
+    MultilineInputComponent,
   ],
   imports: [
     BrowserModule,
