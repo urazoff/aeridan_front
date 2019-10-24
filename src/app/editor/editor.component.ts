@@ -1,7 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import EditorJS from '@editorjs/editorjs';
 import Embed from '@editorjs/embed';
-import Header from '@editorjs/header';
+import Header2 from '@editorjs/header';
+import Header from './plugins/header';
 import Image from '@editorjs/image';
 import Link from '@editorjs/link';
 import List from '@editorjs/list';
@@ -11,7 +12,6 @@ import {ArticleDataService} from '../article-data.service';
 import {IArticleLayout, IArticle} from '../interfaces/IArticle';
 import {IArticleRequest} from '../interfaces/IArticleRequest';
 import {Router} from '@angular/router';
-import {HeaderT} from './plugin-extension';
 import {IHeaderTag} from './interfaces/iheader-tag';
 import {EmptyArticleBlocksError, EmptyTitleError} from '../errors/ArticleSaveErrors';
 
