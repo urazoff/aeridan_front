@@ -24,6 +24,8 @@ import {FormsModule} from '@angular/forms';
 import { MultilineInputDivComponent } from './multiline-input-div/multiline-input-div.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { MultilineInputComponent } from './multiline-input/multiline-input.component';
+import { KatexModule } from 'ng-katex';
+import { LatexComponent } from './article-renderer/latex/latex.component';
 
 @NgModule({
   declarations: [
@@ -47,12 +49,14 @@ import { MultilineInputComponent } from './multiline-input/multiline-input.compo
     MultilineInputDivComponent,
     NotFoundComponent,
     MultilineInputComponent,
+    LatexComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    KatexModule
   ],
   providers: [HttpClientModule, HttpClient],
   bootstrap: [AppComponent],

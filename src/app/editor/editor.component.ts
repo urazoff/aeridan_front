@@ -1,18 +1,17 @@
 import {Component, Input, OnInit} from '@angular/core';
 import EditorJS from '@editorjs/editorjs';
 import Embed from '@editorjs/embed';
-import Header2 from '@editorjs/header';
 import Header from './plugins/header';
 import Image from '@editorjs/image';
 import Link from '@editorjs/link';
 import List from '@editorjs/list';
 import Quote from '@editorjs/quote';
 import Table from '@editorjs/table';
+import Latex from './plugins/latex';
 import {ArticleDataService} from '../article-data.service';
 import {IArticleLayout, IArticle} from '../interfaces/IArticle';
 import {IArticleRequest} from '../interfaces/IArticleRequest';
 import {Router} from '@angular/router';
-import {IHeaderTag} from './interfaces/iheader-tag';
 import {EmptyArticleBlocksError, EmptyTitleError} from '../errors/ArticleSaveErrors';
 
 @Component({
@@ -52,6 +51,12 @@ export class EditorComponent implements OnInit {
         }
       },
       quote: Quote,
+      latex: {
+        class: Latex,
+        config: {
+          placeholder: 'Enter LaTeX'
+        }
+      }
     },
   };
   error = '';
