@@ -8,6 +8,7 @@ import List from '@editorjs/list';
 import Quote from '@editorjs/quote';
 import Table from '@editorjs/table';
 import Latex from './plugins/latex';
+import Code from './plugins/code';
 import {ArticleDataService} from '../article-data.service';
 import {IArticleLayout, IArticle} from '../interfaces/IArticle';
 import {IArticleRequest} from '../interfaces/IArticleRequest';
@@ -55,6 +56,12 @@ export class EditorComponent implements OnInit {
         class: Latex,
         config: {
           placeholder: 'Enter LaTeX'
+        }
+      },
+      code: {
+        class: Code,
+        config: {
+          placeholder: 'Enter code'
         }
       }
     },

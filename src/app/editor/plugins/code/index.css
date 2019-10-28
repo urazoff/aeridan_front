@@ -1,0 +1,53 @@
+@import "~highlight.js/styles/atom-one-light.css";
+
+.ce-code__textarea {
+  min-height: 200px;
+  font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+  color: #41314e;
+  line-height: 1.6em;
+  font-size: 12px;
+  background: #ffffff;
+  border: 1px solid #f1f1f4;
+  box-shadow: none;
+  white-space: pre;
+  word-wrap: normal;
+  overflow-x: auto;
+  resize: vertical;
+}
+.ce-code__preview {
+  min-height: 14px;
+  border-radius: 3px;
+  white-space: pre;
+  word-wrap: normal;
+}
+
+.hljs {
+  background: white;
+}
+.ce-code__select {
+  margin-bottom: 5px;
+  font-size: 12px;
+  background: #ffffff;
+  border: 1px solid #f1f1f4;
+}
+.ce-code__auto-option-span {
+  color: #f1f1f4 !important;
+}
+
+.ce-code__pre {
+  margin-top: 0;
+}
+.ce-code__preview-code-type {
+  padding: 0.05em 0.5em;
+  color: #5c5c5e;
+}
+.ce-code__preview-container {
+  background: #f1f1f4;
+  border-radius: 3px;
+  border: 1px solid #dedee1;
+}
+
+.ce-code .ce-code__preview-container:hover {
+  background: #fafafa;
+  cursor: pointer;
+}

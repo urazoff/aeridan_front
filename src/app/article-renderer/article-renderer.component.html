@@ -36,6 +36,9 @@
         <div *ngSwitchCase="'latex'">
           <app-latex [data]="block.data"></app-latex>
         </div>
+        <div *ngSwitchCase="'code'">
+          <app-code [data]="block.data"></app-code>
+        </div>
       </div>
     </div>
   </div>

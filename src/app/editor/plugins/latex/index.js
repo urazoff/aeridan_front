@@ -3,7 +3,6 @@
  */
 require('./index.css').toString();
 const katex = require('katex');
-const icon = require('./SVG/icon.svg');
 
 /**
  * LatexTool for Editor.js
@@ -115,13 +114,13 @@ class LatexTool {
 
   /**
    * Extract Tool's data from the view
-   * @param {HTMLDivElement} codeWrapper - CodeTool's wrapper, containing textarea with code
-   * @returns {LaTeXData} - saved plugin code
+   * @param {HTMLDivElement} LatexWrapper - LatexTool's wrapper, containing textarea with Latex
+   * @returns {LaTeXData} - saved plugin Latex
    * @public
    */
-  save(codeWrapper) {
+  save(LatexWrapper) {
     return {
-      latex: codeWrapper.querySelector('textarea').value
+      latex: LatexWrapper.querySelector('textarea').value
     };
   }
 
@@ -188,7 +187,7 @@ class LatexTool {
 
   /**
    *  Used by Editor.js paste handling API.
-   *  Provides configuration to handle CODE tag.
+   *  Provides configuration to handle Latex tag.
    *
    * @static
    * @return {{tags: string[]}}

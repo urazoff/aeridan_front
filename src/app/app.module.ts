@@ -26,6 +26,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { MultilineInputComponent } from './multiline-input/multiline-input.component';
 import { KatexModule } from 'ng-katex';
 import { LatexComponent } from './article-renderer/latex/latex.component';
+import { CodeComponent } from './article-renderer/code/code.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { LatexComponent } from './article-renderer/latex/latex.component';
     NotFoundComponent,
     MultilineInputComponent,
     LatexComponent,
+    CodeComponent,
   ],
   imports: [
     BrowserModule,
