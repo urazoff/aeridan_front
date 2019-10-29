@@ -15,6 +15,7 @@
 .ce-latex__preview {
   min-height: 14px;
   border-radius: 3px;
+  text-align: center;
 }
 
 .ce-latex__preview:hover {
