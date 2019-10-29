@@ -99,7 +99,8 @@ class CodeTool {
     textarea.placeholder = this.placeholder;
 
     codeEditor.addEventListener('focusout', function (event) {
-      if (event.explicitOriginalTarget.parentNode !== codeEditor && textarea.value) {
+      const target = event.relatedTarget || event.explicitOriginalTarget;
+      if ((!target ||!target.parentNode || target.parentNode !== codeEditor) && textarea.value) {
         code.textContent = textarea.value;
         if (selectLanguage.value !== "auto") {
           code.className = "hljs " + selectLanguage.value;

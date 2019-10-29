@@ -11,15 +11,19 @@ import hljs from 'highlight.js';
 export class CodeComponent implements OnInit, AfterViewInit {
   @Input() data: IArticleCode;
   @ViewChild('code', {static: false}) code: ElementRef;
+  @ViewChild('language', {static: false}) language: ElementRef;
   constructor() { }
 
   ngOnInit() {
   }
   ngAfterViewInit(): void {
     if (this.data.language === 'auto') {
-      this.data.language = '';
+      // this.data.language = '';
+      this.language.nativeElement.textContent = '';
+      this.code.nativeElement.className = '';
     }
     hljs.highlightBlock(this.code.nativeElement);
+    this.language.nativeElement.textContent = this.code.nativeElement.classList[1];
   }
 
 }
