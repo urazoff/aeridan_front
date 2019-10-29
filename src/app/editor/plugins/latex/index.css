@@ -1,5 +1,5 @@
 .ce-latex__textarea {
-  min-height: 200px;
+  min-height: 200px !important;
   font-family: Menlo, Monaco, Consolas, Courier New, monospace;
   color: #41314e;
   line-height: 1.6em;
