@@ -40,8 +40,21 @@ export class EditorComponent implements OnInit {
         inlineToolbar: true
       },
       table: Table,
-      image: Image,
-      link: Link,
+      image: {
+        class: Image,
+        config: {
+          endpoints: {
+            byFile: 'https://dilshod.xyz/api/v1/image/upload', // Your backend file uploader endpoint
+            // byUrl: 'http://localhost:8008/fetchUrl', // Your endpoint that provides uploading by Url
+          }
+        }
+      },
+      link: {
+        class: Link,
+        config: {
+          endpoint: 'https://dilshod.xyz/api/v1/link', // Your backend endpoint for url data fetching
+        }
+      },
       embed: {
         class: Embed,
         config: {
