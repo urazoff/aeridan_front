@@ -1,6 +1,12 @@
 <div class="ce-code__preview-container">
-  <div class="ce-code__preview-code-type" #language>{{data.language}}</div>
-  <div class="ce-code__preview">
-  <pre class="ce-code__pre"><code class="hljs {{data.language}}" #code>{{data.code}}</code></pre>
+  <div [ngClass]="'top-block'">
+    <div class="ce-code__preview-code-type" #language>{{data.language}}</div>
+    <div [ngClass]="'control'">
+      <app-copy-button [ngClass]="'string-button'" [textToCopy]="data.code"></app-copy-button>
+      <app-spoiler-button [ngClass]="'string-button'" [block]="preview" [maxHeight]="maxHeight" *ngIf="preview.scrollHeight > 200"></app-spoiler-button>
+    </div>
+  </div>
+  <div [ngClass]="'preview'" class="ce-code__preview" #preview>
+    <pre class="ce-code__pre"><code class="hljs {{data.language}}" #code>{{data.code}}</code></pre>
   </div>
 </div>

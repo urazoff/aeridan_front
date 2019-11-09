@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {IArticleTable} from '../interfaces/iarticle-table';
 
 @Component({
   selector: 'app-table',
@@ -6,7 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./table.component.less']
 })
 export class TableComponent implements OnInit {
-  @Input() data: object;
+  @Input() data: IArticleTable;
   constructor() { }
 
   ngOnInit() {

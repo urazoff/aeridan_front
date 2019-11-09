@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {IArticleImage} from '../interfaces/iarticle-image';
 
 @Component({
   selector: 'app-image',
@@ -6,7 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
   styleUrls: ['./image.component.less']
 })
 export class ImageComponent implements OnInit {
-  @Input() data: object;
+  @Input() data: IArticleImage;
   constructor() { }
 
   ngOnInit() {

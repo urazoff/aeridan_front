@@ -1,4 +1,7 @@
 export interface IArticleBlock {
   type: string;
-  data: any;
+  data: IArticleData;
+}
+export interface IArticleData {
+  stretched?: boolean;
 }

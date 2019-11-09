@@ -19,10 +19,13 @@
   border-radius: 3px;
   white-space: pre;
   word-wrap: normal;
+  overflow-x: auto;
 }
 
 .hljs {
   background: white;
+  font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+  font-size: 14px;
 }
 .ce-code__select {
   margin-bottom: 5px;
@@ -36,6 +39,7 @@
 
 .ce-code__pre {
   margin-top: 0;
+  margin-bottom: 0;
 }
 .ce-code__preview-code-type {
   padding: 0.05em 0.5em;

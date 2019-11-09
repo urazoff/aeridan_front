@@ -1,1 +1,10 @@
-<p>image works!</p>
+<div [ngClass]="{
+  'border': data.withBorder,
+  'stretched': data.stretched,
+  'background': data.withBackground
+}">
+  <div [ngClass]="'image'">
+    <img [ngClass]="'image-picture'" [src]="data.file.url">
+  </div>
+  <div [ngClass]="'caption'" *ngIf="data.caption !== ''">{{data.caption}}</div>
+</div>

@@ -1,14 +1,18 @@
 <div>
-  <div [ngClass]="{'publication-date': true}">
-    {{article?.createdAt | date : 'shortDate'}}
+  <div [ngClass]="'width-limit'">
+    <div [ngClass]="{'publication-date': true}">
+      {{article?.createdAt | date : 'shortDate'}}
+    </div>
+    <div [ngClass]="'title-block'">
+      <h1 [ngClass]="{'title': true}">{{article?.layout.title}}</h1>
+    </div>
   </div>
-  <div [ngClass]="'title-block'">
-    <h1 [ngClass]="{'title': true}">{{article?.layout.title}}</h1>
-  </div>
-
   <div [ngClass]="{'article-content': true}" #articleContent>
     <div *ngFor="let block of article.layout.blocks">
-      <div [ngSwitch]="block.type" [ngClass]="'article-block'">
+      <div [ngSwitch]="block.type" [ngClass]="{
+      'article-block': true,
+      'article-block--stretched': block.data.stretched
+      }">
         <div *ngSwitchCase="'heading'">
           <app-header [data]="block.data"></app-header>
         </div>
@@ -33,11 +37,14 @@
         <div *ngSwitchCase="'paragraph'">
           <app-paragraph [data]="block.data"></app-paragraph>
         </div>
-        <div *ngSwitchCase="'latex'">
+        <div *ngSwitchCase="'katex'">
           <app-latex [data]="block.data"></app-latex>
         </div>
         <div *ngSwitchCase="'code'">
           <app-code [data]="block.data"></app-code>
+        </div>
+        <div *ngSwitchCase="'delimiter'">
+          <app-delimiter [data]="block.data"></app-delimiter>
         </div>
       </div>
     </div>

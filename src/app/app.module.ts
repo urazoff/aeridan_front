@@ -25,8 +25,11 @@ import { MultilineInputDivComponent } from './multiline-input-div/multiline-inpu
 import { NotFoundComponent } from './not-found/not-found.component';
 import { MultilineInputComponent } from './multiline-input/multiline-input.component';
 import { KatexModule } from 'ng-katex';
-import { LatexComponent } from './article-renderer/latex/latex.component';
+import { KatexComponent } from './article-renderer/katex/katex.component';
 import { CodeComponent } from './article-renderer/code/code.component';
+import { SpoilerButtonComponent } from './spoiler-button/spoiler-button.component';
+import { CopyButtonComponent } from './copy-button/copy-button.component';
+import { DelimiterComponent } from './article-renderer/delimiter/delimiter.component';
 
 @NgModule({
   declarations: [
@@ -50,8 +53,11 @@ import { CodeComponent } from './article-renderer/code/code.component';
     MultilineInputDivComponent,
     NotFoundComponent,
     MultilineInputComponent,
-    LatexComponent,
+    KatexComponent,
     CodeComponent,
+    SpoilerButtonComponent,
+    CopyButtonComponent,
+    DelimiterComponent,
   ],
   imports: [
     BrowserModule,

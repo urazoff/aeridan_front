@@ -1,9 +1,11 @@
 <app-warning-block *ngIf="error.length>0">{{error}}</app-warning-block>
-<div class="page-right" *ngIf="!editMode"><app-button (onClick)="publicate()">Publicate</app-button></div>
-<div class="page-right" *ngIf="editMode"><app-button (onClick)="update()">Save</app-button></div>
+<div class="page-right" *ngIf="!editMode"><app-button (onClick)="publicate()">
+  {{lang.translate("PUBLISH_ARTICLE_BUTTON")}}
+</app-button></div>
+<div class="page-right" *ngIf="editMode"><app-button (onClick)="update()">{{lang.translate("SAVE_ARTICLE_BUTTON")}}</app-button></div>
 <div>
 <div class="page-center">
-  <app-multiline-input-div id="article-title" [placeholder]="'Write a title'" [value]="title" (valueChanged)="onTitleChanged($event)"></app-multiline-input-div>
+  <app-multiline-input-div id="article-title" [placeholder]="lang.translate('TITLE_TOOL_PLACEHOLDER')" [value]="title" (valueChanged)="onTitleChanged($event)"></app-multiline-input-div>
 </div>
 <!--<div class="hr"></div>-->
 <div id="article-editor"></div>

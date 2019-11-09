@@ -1,1 +1,11 @@
-<p>table works!</p>
+<div class="tc-table__wrap">
+  <table class="tc-table">
+    <tbody>
+    <tr *ngFor="let line of data.content">
+      <td class="tc-table__cell" *ngFor="let cell of line" >
+        <div class="tc-table__area" [innerHTML]="cell"></div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
