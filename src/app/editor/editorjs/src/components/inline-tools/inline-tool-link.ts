@@ -15,13 +15,6 @@ import {Notifier, Toolbar} from '../../../types/api';
 export default class LinkInlineTool implements InlineTool {
 
   /**
-   * Specifies Tool as Inline Toolbar Tool
-   *
-   * @return {boolean}
-   */
-  public static isInline = true;
-
-  /**
    * Sanitizer Rule
    * Leave <a> tags
    * @return {object}
@@ -34,6 +27,73 @@ export default class LinkInlineTool implements InlineTool {
         rel: 'nofollow',
       },
     } as SanitizerConfig;
+  }
+
+  /**
+   * Set a shortcut
+   */
+  public get shortcut(): string {
+    return 'CMD+K';
+  }
+
+  /**
+   * Specifies Tool as Inline Toolbar Tool
+   *
+   * @return {boolean}
+   */
+  public static isInline = true;
+
+  /**
+   * Detects if passed string is URL
+   * @param  {string}  str
+   * @return {Boolean}
+   */
+  private static validateURL(str: string): boolean {
+    /**
+     * Don't allow spaces
+     */
+    return !/\s/.test(str);
+  }
+
+  /**
+   * Process link before injection
+   * - sanitize
+   * - add protocol for links like 'google.com'
+   * @param {string} link - raw user input
+   */
+  private static prepareLink(link: string): string {
+    link = link.trim();
+    link = LinkInlineTool.addProtocol(link);
+    return link;
+  }
+
+  /**
+   * Add 'http' protocol to the links like 'vc.ru', 'google.com'
+   * @param {String} link
+   */
+  private static addProtocol(link: string): string {
+    /**
+     * If protocol already exists, do nothing
+     */
+    if (/^(\w+):(\/\/)?/.test(link)) {
+      return link;
+    }
+
+    /**
+     * We need to add missed HTTP protocol to the link, but skip 2 cases:
+     *     1) Internal links like "/general"
+     *     2) Anchors looks like "#results"
+     *     3) Protocol-relative URLs like "//google.com"
+     */
+    const isInternal = /^\/[^\/\s]/.test(link),
+      isAnchor = link.substring(0, 1) === '#',
+      isProtocolRelative = /^\/\/[^\/\s]/.test(link);
+
+    if (!isInternal && !isAnchor && !isProtocolRelative) {
+      link = 'http://' + link;
+    }
+
+    return link;
   }
 
   /**
@@ -103,6 +163,7 @@ export default class LinkInlineTool implements InlineTool {
     this.inlineToolbar = api.inlineToolbar;
     this.notifier = api.notifier;
     this.selection = new SelectionUtils();
+
   }
 
   /**
@@ -204,13 +265,6 @@ export default class LinkInlineTool implements InlineTool {
     this.closeActions();
   }
 
-  /**
-   * Set a shortcut
-   */
-  public get shortcut(): string {
-    return 'CMD+K';
-  }
-
   private toggleActions(): void {
     if (!this.inputOpened) {
       this.openActions(true);
@@ -270,7 +324,7 @@ export default class LinkInlineTool implements InlineTool {
       this.closeActions();
     }
 
-    if (!this.validateURL(value)) {
+    if (!LinkInlineTool.validateURL(value)) {
 
       this.notifier.show({
         message: 'Pasted link is not valid.',
@@ -281,7 +335,7 @@ export default class LinkInlineTool implements InlineTool {
       return;
     }
 
-    value = this.prepareLink(value);
+    value = LinkInlineTool.prepareLink(value);
 
     this.selection.restore();
     this.selection.removeFakeBackground();
@@ -296,59 +350,6 @@ export default class LinkInlineTool implements InlineTool {
     event.stopImmediatePropagation();
     this.selection.collapseToEnd();
     this.inlineToolbar.close();
-  }
-
-  /**
-   * Detects if passed string is URL
-   * @param  {string}  str
-   * @return {Boolean}
-   */
-  private validateURL(str: string): boolean {
-    /**
-     * Don't allow spaces
-     */
-    return !/\s/.test(str);
-  }
-
-  /**
-   * Process link before injection
-   * - sanitize
-   * - add protocol for links like 'google.com'
-   * @param {string} link - raw user input
-   */
-  private prepareLink(link: string): string {
-    link = link.trim();
-    link = this.addProtocol(link);
-    return link;
-  }
-
-  /**
-   * Add 'http' protocol to the links like 'vc.ru', 'google.com'
-   * @param {String} link
-   */
-  private addProtocol(link: string): string {
-    /**
-     * If protocol already exists, do nothing
-     */
-    if (/^(\w+):(\/\/)?/.test(link)) {
-      return link;
-    }
-
-    /**
-     * We need to add missed HTTP protocol to the link, but skip 2 cases:
-     *     1) Internal links like "/general"
-     *     2) Anchors looks like "#results"
-     *     3) Protocol-relative URLs like "//google.com"
-     */
-    const isInternal = /^\/[^\/\s]/.test(link),
-      isAnchor = link.substring(0, 1) === '#',
-      isProtocolRelative = /^\/\/[^\/\s]/.test(link);
-
-    if (!isInternal && !isAnchor && !isProtocolRelative) {
-      link = 'http://' + link;
-    }
-
-    return link;
   }
 
   /**

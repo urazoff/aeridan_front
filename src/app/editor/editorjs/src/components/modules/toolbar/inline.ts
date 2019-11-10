@@ -513,7 +513,6 @@ export default class InlineToolbar extends Module {
    */
   private get inlineTools(): { [name: string]: InlineTool } {
     const result = {};
-
     for (const tool in this.Editor.Tools.inline) {
       if (this.Editor.Tools.inline.hasOwnProperty(tool)) {
         const toolSettings = this.Editor.Tools.getToolSettings(tool);

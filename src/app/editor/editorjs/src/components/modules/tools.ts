@@ -68,7 +68,6 @@ export default class Tools extends Module {
       if (!tool[this.INTERNAL_SETTINGS.IS_INLINE]) {
         return false;
       }
-
       /**
        * Some Tools validation
        */
@@ -349,7 +348,6 @@ export default class Tools extends Module {
       api: this.Editor.API.methods,
       config: (toolSettings[this.USER_SETTINGS.CONFIG] || {}) as ToolSettings,
     };
-
     return new tool(constructorOptions) as InlineTool;
   }
 
