@@ -12,7 +12,7 @@ export class SpoilerButtonComponent implements OnInit {
   labels: Array<string>;
   isShow = false;
   defaultStyleDisplay: string;
-  constructor(private lang: LanguageService) {
+  constructor(public lang: LanguageService) {
     this.labels = [this.lang.translate('SPOILER_BUTTON_HIDE'), this.lang.translate('SPOILER_BUTTON_SHOW')];
   }
 

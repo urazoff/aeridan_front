@@ -16,7 +16,7 @@ export class ArticlePageComponent implements OnInit {
   isArticleReceived: boolean = false;
   private subscription: Subscription;
   // @ViewChild('articleContainer') articleContainer: TemplateRef;
-  constructor(private activatedRoute: ActivatedRoute, private articleDataService: ArticleDataService, private router: Router, private lang: LanguageService) {
+  constructor(private activatedRoute: ActivatedRoute, private articleDataService: ArticleDataService, private router: Router, public lang: LanguageService) {
     const idProm = new Promise((resolve, reject) => {
       this.subscription = this.activatedRoute.params.subscribe(params => {
         this.id = params.id;

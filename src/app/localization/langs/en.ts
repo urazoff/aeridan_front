@@ -7,10 +7,10 @@ export default {
   SPOILER_BUTTON_SHOW: 'Open',
   COPY_BUTTON_CAPTION: 'Copy',
   // Tools' placeholders
-  HEADER_TOOL_PLACEHOLDER: 'Enter header',
-  TITLE_TOOL_PLACEHOLDER: 'Enter title',
-  CODE_TOOL_PLACEHOLDER: 'Enter code',
-  PARAGRAPH_TOOL_PLACEHOLDER: 'Enter text',
+  HEADER_TOOL_PLACEHOLDER: 'Enter a header',
+  TITLE_TOOL_PLACEHOLDER: 'Enter a title',
+  CODE_TOOL_PLACEHOLDER: 'Enter a code',
+  PARAGRAPH_TOOL_PLACEHOLDER: 'Enter a text',
   KATEX_TOOL_PLACEHOLDER: 'Write TeX',
   LINK_TOOL_PLACEHOLDER: 'Paste link',
   // Tools' titles
@@ -24,10 +24,10 @@ export default {
   TABLE_TOOL_TITLE: 'Table',
   DELIMITER_TOOL_TITLE: 'Delimiter',
   // IMAGE TOOL
-  IMAGE_TOOL_CAPTION_PLACEHOLDER: 'Caption',
+  IMAGE_TOOL_CAPTION_PLACEHOLDER: 'Enter a caption',
   IMAGE_TOOL_BUTTON_CONTENT: 'Select image',
   IMAGE_TOOL_ERROR_MESSAGE: 'Can not upload an image, try another',
   // QUOTE TOOL
-  QUOTE_TOOL_QUOTE_PLACEHOLDER: 'Enter quote',
-  QUOTE_TOOL_CAPTION_PLACEHOLDER: 'Caption/author'
+  QUOTE_TOOL_QUOTE_PLACEHOLDER: 'Enter a quote',
+  QUOTE_TOOL_CAPTION_PLACEHOLDER: 'Enter a caption/author'
 };

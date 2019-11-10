@@ -200,7 +200,6 @@ class CodeTool {
    */
   set data(data) {
     this._data = data;
-    console.log(data, "data set");
     if (this.nodes.textarea) {
       this.nodes.textarea.textContent = data.code;
     }

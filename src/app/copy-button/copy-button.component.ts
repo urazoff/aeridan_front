@@ -8,7 +8,7 @@ import {LanguageService} from '../localization/language.service';
 })
 export class CopyButtonComponent implements OnInit {
   @Input() textToCopy: string;
-  constructor(private lang: LanguageService) { }
+  constructor(public lang: LanguageService) { }
 
   ngOnInit() {
   }

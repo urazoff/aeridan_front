@@ -68,7 +68,7 @@ export class EditorComponent implements OnInit {
           }
         }
       },
-      link: {
+      reference: {
         class: Link,
         config: {
           title: this.lang.translate('LINK_TOOL_TITLE'),
@@ -131,7 +131,7 @@ export class EditorComponent implements OnInit {
   error = '';
   title: string;
   editMode = false;
-  constructor(private httpService: ArticleDataService, private router: Router, private lang: LanguageService) {
+  constructor(private httpService: ArticleDataService, private router: Router, public lang: LanguageService) {
   }
   ngOnInit() {
     if (this.data) {
