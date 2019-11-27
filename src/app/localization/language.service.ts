@@ -15,12 +15,6 @@ export class LanguageService {
   constructor(private http: HttpClient) {
     this.availableLangs = ['ru', 'en'];
     this.userLang = this.defaultLang;
-    for (const lang of navigator.languages) {
-      if (this.availableLangs.indexOf(lang) !== -1) {
-        this.userLang = lang;
-        break;
-      }
-    }
     this.dictionary = this.getDictionary(this.userLang);
   }
 
@@ -33,6 +27,24 @@ export class LanguageService {
 
   getDictionary(lang: string) {
     return this.languages[lang];
+  }
+
+  public getUserLang() {
+    for (const lang of navigator.languages) {
+      if (this.availableLangs.indexOf(lang) !== -1) {
+        return lang;
+      }
+    }
+    return this.defaultLang;
+  }
+
+  public setUserLang(lang) {
+    if (this.availableLangs.indexOf(lang) !== -1) {
+      this.userLang = lang;
+    } else {
+      this.userLang = this.defaultLang;
+    }
+    this.dictionary = this.getDictionary(this.userLang);
   }
 
   translate(word: string) {
