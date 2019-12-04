@@ -31,14 +31,6 @@ export class ArticlePageComponent implements OnInit {
           ['/notfound'],
         );
       });
-      this.language = params.language;
-      if (!this.language) {
-        this.router.navigate(
-          [`/${lang.getUserLang()}${this.router.url}`],
-        );
-      } else {
-        this.lang.setUserLang(this.language);
-      }
     });
   }
 
@@ -47,7 +39,7 @@ export class ArticlePageComponent implements OnInit {
 
   navigateToEdit() {
     this.router.navigate(
-      [`/${this.language}/edit/${this.id}`],
+      [`/${this.lang.userLang}/edit/${this.id}`],
     );
   }
 

@@ -30,6 +30,7 @@ import { CodeComponent } from './article-renderer/code/code.component';
 import { SpoilerButtonComponent } from './spoiler-button/spoiler-button.component';
 import { CopyButtonComponent } from './copy-button/copy-button.component';
 import { DelimiterComponent } from './article-renderer/delimiter/delimiter.component';
+import { PageContainerComponent } from './page-container/page-container.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { DelimiterComponent } from './article-renderer/delimiter/delimiter.compo
     SpoilerButtonComponent,
     CopyButtonComponent,
     DelimiterComponent,
+    PageContainerComponent,
   ],
   imports: [
     BrowserModule,

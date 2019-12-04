@@ -26,15 +26,6 @@ export class EditorPageComponent implements OnInit {
           this.isArticleReceived = true;
         });
       }
-      this.language = params.language;
-      if (!this.language) {
-        this.router.navigate(
-          [`/${lang.getUserLang()}${this.router.url}`],
-        );
-      } else {
-        this.lang.setUserLang(this.language);
-      }
-
     });
   }
 

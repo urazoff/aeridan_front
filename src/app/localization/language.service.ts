@@ -48,8 +48,12 @@ export class LanguageService {
   }
 
   translate(word: string) {
-    if (this.dictionary[word]) {
-      return this.dictionary[word];
+    let dictionary = this.dictionary;
+    if (!dictionary) {
+      dictionary = this.getDictionary(this.getUserLang());
+    }
+    if (dictionary[word]) {
+      return dictionary[word];
     } else {
       return this.getDictionary(this.defaultLang)[word];
     }
