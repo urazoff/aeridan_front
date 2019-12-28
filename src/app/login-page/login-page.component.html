@@ -1,0 +1,64 @@
+<div [ngClass]="{
+  'light-theme': true
+}">
+  <div [ngClass]="{
+    'page-container': true
+  }">
+    <div [ngClass]="'main-block'">
+      <div [ngClass]="'login-registration-block'">
+        <div [ngClass]="'center-block'">
+          <div [ngClass]="'logo'"></div>
+          <form [formGroup]="switch">
+            <div [ngClass]="'field switch'">
+
+              <input type="radio" [value]="'login'" id="switch-login" [formControlName]="'authtype'">
+              <label for="switch-login">Вход</label>
+              <input type="radio" [value]="'registration'" id="switch-registration" checked="checked" [formControlName]="'authtype'">
+              <label for="switch-registration">Регистрация</label>
+
+            </div>
+          </form>
+          <div [ngClass]="'fields'" *ngIf="switch.get('authtype').value === 'registration'">
+            <input [ngClass]="'field icon login'" type="text" placeholder="Имя и фамилия" required>
+            <input [ngClass]="'field icon email'" type="email" placeholder="Email" required>
+            <input [ngClass]="'field icon password'" type="password" placeholder="Пароль" required>
+          </div>
+          <div [ngClass]="'fields'" *ngIf="switch.get('authtype').value === 'login'">
+            <input [ngClass]="'field icon email'" type="email" placeholder="Email" required>
+            <input [ngClass]="'field icon password'" type="password" placeholder="Пароль" required>
+            <input [ngClass]="'remember'" type="checkbox" id="login-remember-me">
+            <label for="login-remember-me">
+              <div [ngClass]="'background'">
+                <div [ngClass]="'circle'"></div>
+              </div>
+              запомнить вас?
+            </label>
+          </div>
+          <div [ngClass]="'button'" *ngIf="switch.get('authtype').value === 'registration'">Регистрация</div>
+          <div [ngClass]="'button'" *ngIf="switch.get('authtype').value === 'login'">Войти</div>
+          <div [ngClass]="'another-auth'">
+            <div [ngClass]="'line-label'">
+              <div [ngClass]="'line'"></div>
+              <div [ngClass]="'label'">или авторизуйтесь через</div>
+              <div [ngClass]="'line'"></div>
+            </div>
+            <div [ngClass]="'login-methods'">
+              <div [ngClass]="'facebook login-method'"></div>
+              <div [ngClass]="'google login-method'"></div>
+              <div [ngClass]="'vk login-method'"></div>
+              <div [ngClass]="'github login-method'"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div [ngClass]="'registration-terms-block'" *ngIf="switch.get('authtype').value === 'registration'">
+        Нажимая кнопку “Регистрация”, Вы соглашаетесь с &nbsp;<a href="#">Условиями, Политикой использования данных</a>
+        &nbsp;и&nbsp;<a href="#"> Политикой в отношении файлов cookie.</a>
+      </div>
+      <div [ngClass]="'registration-terms-block'" *ngIf="switch.get('authtype').value === 'login'">
+        Нажимая кнопку “Войти”, Вы соглашаетесь с &nbsp;<a href="#">Условиями, Политикой использования данных</a>
+        &nbsp;и&nbsp;<a href="#"> Политикой в отношении файлов cookie.</a>
+      </div>
+    </div>
+  </div>
+</div>

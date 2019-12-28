@@ -20,7 +20,7 @@ import { ImageComponent } from './article-renderer/image/image.component';
 import { ListComponent } from './article-renderer/list/list.component';
 import { QuoteComponent } from './article-renderer/quote/quote.component';
 import { EmbedComponent } from './article-renderer/embed/embed.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MultilineInputDivComponent } from './multiline-input-div/multiline-input-div.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { MultilineInputComponent } from './multiline-input/multiline-input.component';
@@ -31,6 +31,7 @@ import { SpoilerButtonComponent } from './spoiler-button/spoiler-button.componen
 import { CopyButtonComponent } from './copy-button/copy-button.component';
 import { DelimiterComponent } from './article-renderer/delimiter/delimiter.component';
 import { PageContainerComponent } from './page-container/page-container.component';
+import { LoginPageComponent } from './login-page/login-page.component';
 
 @NgModule({
   declarations: [
@@ -60,13 +61,15 @@ import { PageContainerComponent } from './page-container/page-container.componen
     CopyButtonComponent,
     DelimiterComponent,
     PageContainerComponent,
+    LoginPageComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    KatexModule
+    KatexModule,
+    ReactiveFormsModule
   ],
   providers: [HttpClientModule, HttpClient],
   bootstrap: [AppComponent],
