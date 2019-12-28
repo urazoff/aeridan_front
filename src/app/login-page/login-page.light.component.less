@@ -295,6 +295,14 @@
     //display: flex;
     align-self: flex-end;
     text-align: center;
+    a {
+      color: @button-background-color;
+      text-decoration: none;
+      &:hover {
+        color: darken(@button-background-color, 10%);
+      }
+    }
+
   }
 
 }
