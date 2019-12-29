@@ -29,5 +29,11 @@ export default {
   IMAGE_TOOL_ERROR_MESSAGE: 'Can not upload an image, try another',
   // QUOTE TOOL
   QUOTE_TOOL_QUOTE_PLACEHOLDER: 'Enter a quote',
-  QUOTE_TOOL_CAPTION_PLACEHOLDER: 'Enter a caption/author'
+  QUOTE_TOOL_CAPTION_PLACEHOLDER: 'Enter a caption/author',
+  // AUTH RULES
+  AUTH_RULE_PASSWORD: 'Be a minimum of eight (8) characters in length.\n' +
+    'Use at least 3 of the following types of characters: (a) uppercase letters,' +
+    ' (b) lowercase letters, (c) numbers, and/or (d) special characters',
+  AUTH_RULE_LOGIN: 'Two words, separated by a space, at least two (2) characters long.',
+  AUTH_RULE_EMAIL: 'Email address like login@domain.zone'
 };

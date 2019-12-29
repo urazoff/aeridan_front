@@ -1,15 +1,50 @@
-@font: 'Roboto', sans-serif;
-@font-size: 14px;
-@page-width: 300px;
-@line-height: 16px;
+@import "../less/mixins/animation";
+
+@logo-url: url("/assets/logo/logo.light.svg");
+// auth icons
+@login-inactive-icon-url: url("/assets/icons/auth/login.inactive.light.svg");
+@login-active-icon-url: url("/assets/icons/auth/login.active.light.svg");
+@login-invalid-icon-url: url("/assets/icons/auth/login.invalid.light.svg");
+@email-inactive-icon-url: url("/assets/icons/auth/email.inactive.light.svg");
+@email-active-icon-url: url("/assets/icons/auth/email.active.light.svg");
+@email-invalid-icon-url: url("/assets/icons/auth/email.invalid.light.svg");
+@password-inactive-icon-url: url("/assets/icons/auth/password.inactive.light.svg");
+@password-active-icon-url: url("/assets/icons/auth/password.active.light.svg");
+@password-invalid-icon-url: url("/assets/icons/auth/password.invalid.light.svg");
+@password-preview-inactive-url: url("/assets/icons/auth/password-preview.inactive.light.svg");
+@password-preview-active-url: url("/assets/icons/auth/password-preview.active.light.svg");
+// login methods' icons
+@facebook-icon-url: url("/assets/icons/login-methods/facebook.svg");
+@google-icon-url: url("/assets/icons/login-methods/google.svg");
+@vk-icon-url: url("/assets/icons/login-methods/vk.svg");
+@github-icon-url: url("/assets/icons/login-methods/github.light.svg");
+
 @field-inactive-color: #b2a59f;
 @field-active-color: #281a11;
 @field-background-color: #EDDED3;
 @button-background-color: #A83E40;
+
+@switch-background-color: rgba(120, 120, 128, 0.16);
+@switch-circle-background-color: white;
+@switch-background-color-checked: #C16C86;
+@another-auth-line-label-color: #594F51;
+@button-text-color: white;
 .light-theme {
+  @font: 'Roboto', sans-serif;
+  @font-size: 16px;
+  @line-height: 20px;
+  @terms-font-size: 14px;
+  @terms-font-size-phone: 12px;
+  @page-width: 300px;
+  @terms-line-height: 16px;
+  @transition-property: all 0.15s ease-in-out;
   font-family: @font;
   font-size: @font-size;
   line-height: @line-height;
+
+  input {
+    outline: none;
+  }
 
   .page-container {
     position: absolute;
@@ -28,6 +63,7 @@
     display: flex;
     flex-direction: column;
     position: relative;
+    min-height: 600px;
     bottom: 0;
     top: 0;
     width: @page-width;
@@ -53,13 +89,14 @@
     .logo {
       width: 100%;
       height: 100px;
-      background-image: url("/assets/logo/logo.light.svg");
+      background-image: @logo-url;
       background-size: 100% 100%;
     }
 
     form {
       .switch {
         padding: 5px !important;
+
         input[type=radio] {
           display: none;
         }
@@ -67,12 +104,12 @@
         input[type=radio] + label {
           flex-shrink: 1;
           padding: 0 0 0 8px;
-          width: 149px;
+          width: 51%;
           height: 30px;
           display: flex;
           justify-content: center;
           align-items: center;
-          color: #281A11;
+          color: @field-active-color;
           font-size: 16px;
           line-height: 20px;
           border-radius: 7px;
@@ -90,24 +127,28 @@
         input[type=radio]:checked + label {
           flex-shrink: 0;
           padding: 0;
-          color: #EDDED3;
-          background: #281A11;
+          color: @field-background-color;
+          background: @field-active-color;
           border: 0.5px solid rgba(0, 0, 0, 0.04);
           box-shadow: 0 3px 3px rgba(0, 0, 0, 0.05), 0 3px 8px rgba(0, 0, 0, 0.05);
         }
       }
     }
+
     .remember {
       display: none;
+
       + label {
 
         display: flex;
         align-items: center;
-        color: #594F51;
-        font-size: 16px;
+        color: @another-auth-line-label-color;
+        //font-size: 16px;
+
         &:hover {
           cursor: pointer;
         }
+
         .background {
           position: relative;
           display: flex;
@@ -116,39 +157,44 @@
           padding: 2px;
           width: 50px;
           height: 30px;
-          margin: 5px 12px 5px 0;
+          margin: 5px 10px 5px 0;
           border-radius: 25px;
-          background: rgba(120, 120, 128, 0.16);
+          background: @switch-background-color;
           box-sizing: border-box;
-          transition: all 0.15s ease-in-out;
+          .mxn-transition(@transition-property);
+
           .circle {
             position: relative;
             left: 0;
             width: 26px;
             height: 26px;
             border-radius: 50%;
-            background: #FFFFFF;
+            background: @switch-circle-background-color;
             border: 0.5px solid rgba(0, 0, 0, 0.04);
             box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.06), 0px 3px 8px rgba(0, 0, 0, 0.15);
             box-sizing: border-box;
-            transition: all 0.15s ease-in-out;
+            .mxn-transition(@transition-property);
           }
         }
       }
+
       &:checked + label {
         .background {
-          background-color: #C16C86;
+          background-color: @switch-background-color-checked;
+
           .circle {
             left: calc(100% - 26px);
           }
         }
       }
     }
+
     .fields {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       height: 140px;
+
     }
 
     .field {
@@ -163,15 +209,16 @@
       color: @field-active-color;
       font-style: normal;
       font-weight: normal;
-      font-size: 16px;
-      line-height: 20px;
+      font-size: @font-size;
+      line-height: @line-height;
       box-sizing: border-box;
+      .mxn-transition(@transition-property);
 
       ::placeholder {
         color: @field-inactive-color;
       }
 
-      :focus {
+      &:focus {
         box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.25);
       }
 
@@ -180,45 +227,62 @@
       }
 
       &.login {
-        background: @field-background-color url("/assets/icons/auth/login.inactive.light.svg") no-repeat 8px 50%;
-      }
-
-      &.login:valid {
-        background: @field-background-color url("/assets/icons/auth/login.active.light.svg") no-repeat 8px 50%;
-      }
-
-      &.login:focus {
-        box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.25);
-        background: @field-background-color url("/assets/icons/auth/login.active.light.svg") no-repeat 8px 50%;
+        background: @field-background-color @login-inactive-icon-url no-repeat 8px;
+        &.ng-invalid.ng-dirty {
+          background: @field-background-color @login-invalid-icon-url no-repeat 8px;
+        }
+        &:focus,&.ng-valid{
+          background: @field-background-color @login-active-icon-url no-repeat 8px;
+        }
       }
 
       &.email {
-        background: @field-background-color url("/assets/icons/auth/email.inactive.light.svg") no-repeat 8px 50%;
-      }
-
-      &.email:valid {
-        background: @field-background-color url("/assets/icons/auth/email.active.light.svg") no-repeat 8px 50%;
-      }
-
-      &.email:focus {
-        box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.25);
-        background: @field-background-color url("/assets/icons/auth/email.active.light.svg") no-repeat 8px 50%;
+        background: @field-background-color @email-inactive-icon-url no-repeat 8px;
+        &.ng-invalid.ng-dirty {
+          background: @field-background-color @email-invalid-icon-url no-repeat 8px;
+        }
+        &:focus,&.ng-valid{
+          background: @field-background-color @email-active-icon-url no-repeat 8px;
+        }
       }
 
       &.password {
-        background: @field-background-color url("/assets/icons/auth/password.inactive.light.svg") no-repeat 8px 50%;
+        background: @field-background-color @password-inactive-icon-url no-repeat 8px;
+        padding: 0 40px 0 40px;
+        &.ng-invalid.ng-dirty {
+          background: @field-background-color @password-invalid-icon-url no-repeat 8px;
+        }
+        &:focus,&.ng-valid{
+          background: @field-background-color @password-active-icon-url no-repeat 8px;
+        }
+        +.password-preview {
+          display: none;
+          +label {
+            display: inline-block;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            z-index: 1000;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            background: @password-preview-inactive-url 8px no-repeat;
+            .mxn-transition(@transition-property);
+            &:hover {
+              background: @password-preview-active-url 8px no-repeat;
+            }
+          }
+          &:checked+label {
+            background: @password-preview-active-url 8px no-repeat;
+          }
+        }
       }
 
-      &.password:valid {
-        background: @field-background-color url("/assets/icons/auth/password.active.light.svg") no-repeat 8px 50%;
-      }
-
-      &.password:focus {
-        box-shadow: inset 0 4px 6px rgba(0, 0, 0, 0.25);
-        background: @field-background-color url("/assets/icons/auth/password.active.light.svg") no-repeat 8px 50%;
-      }
     }
-
+    .password-block {
+      position: relative;
+      //display: flex;
+    }
     .button {
       display: flex;
       align-items: center;
@@ -229,35 +293,42 @@
       background-color: @button-background-color;
       font-style: normal;
       font-weight: normal;
-      font-size: 16px;
-      line-height: 20px;
-      color: white;
+      cursor: pointer;
+      color: @button-text-color;
+      .mxn-transition(@transition-property);
+      &:hover {
+        background-color: darken(@button-background-color, 10%);
+      }
+      &.disabled {
+        background-color: lighten(@button-background-color, 20%);
+        cursor: auto;
+      }
     }
 
-    .button:hover {
-      cursor: pointer;
-      background-color: darken(@button-background-color, 10%);
-    }
     .another-auth {
       .line-label {
         display: flex;
         align-items: center;
 
         height: 40px;
+
         .line {
           flex-grow: 1;
           height: 0;
-          border: 1px solid #594F51;
+          border: 1px solid @another-auth-line-label-color;
         }
+
         .label {
           margin: 0 5px;
-          color: #594F51;
+          color: @another-auth-line-label-color;
         }
       }
+
       .login-methods {
         display: flex;
         justify-content: space-between;
         align-items: center;
+
         .login-method {
           height: 40px;
           width: 40px;
@@ -268,22 +339,22 @@
         }
 
         .facebook {
-          background-image: url("/assets/icons/login-methods/facebook.svg");
+          background-image: @facebook-icon-url;
           background-repeat: no-repeat;
         }
 
         .google {
-          background-image: url("/assets/icons/login-methods/google.svg");
+          background-image: @google-icon-url;
           background-repeat: no-repeat;
         }
 
         .vk {
-          background-image: url("/assets/icons/login-methods/vk.svg");
+          background-image: @vk-icon-url;
           background-repeat: no-repeat;
         }
 
         .github {
-          background-image: url("/assets/icons/login-methods/github.light.svg");
+          background-image: @github-icon-url;
           background-repeat: no-repeat;
         }
       }
@@ -295,9 +366,13 @@
     //display: flex;
     align-self: flex-end;
     text-align: center;
+    font-size: @terms-font-size;
+    line-height: @terms-line-height;
+
     a {
       color: @button-background-color;
       text-decoration: none;
+
       &:hover {
         color: darken(@button-background-color, 10%);
       }
@@ -305,4 +380,69 @@
 
   }
 
+  @media screen and (max-device-width: 320px) {
+    .main-block {
+      min-width: 250px;
+      min-height: 450px;
+
+      .login-registration-block {
+        .center-block {
+          height: 390px;
+        }
+
+        .logo {
+          height: 80px;
+        }
+
+        .fields {
+          height: 130px;
+        }
+
+        .another-auth {
+          .line-label {
+            height: 15px;
+            margin-bottom: 8px;
+          }
+        }
+      }
+    }
+
+    .registration-terms-block {
+      font-size: @terms-font-size-phone;
+    }
+  }
+
+  @media screen and (max-device-width: 576px) and (min-device-width: 321px) {
+    .main-block {
+      min-height: 500px;
+      width: 90%;
+
+      .login-registration-block {
+        .center-block {
+          height: 420px;
+        }
+
+        .logo {
+          height: 85px;
+        }
+
+        .fields {
+          height: 134px;
+        }
+
+        .another-auth {
+          .line-label {
+            height: 15px;
+            margin-bottom: 10px;
+          }
+        }
+      }
+    }
+
+    .registration-terms-block {
+      font-size: @terms-font-size-phone;
+    }
+  }
 }
+
+

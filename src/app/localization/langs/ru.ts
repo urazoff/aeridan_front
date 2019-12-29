@@ -29,5 +29,12 @@ export default {
   IMAGE_TOOL_ERROR_MESSAGE: 'Не получается загрузить изображение, попробуйте еще раз!',
   // QUOTE TOOL
   QUOTE_TOOL_QUOTE_PLACEHOLDER: 'Введите цитату',
-  QUOTE_TOOL_CAPTION_PLACEHOLDER: 'Введите подпись/автора'
+  QUOTE_TOOL_CAPTION_PLACEHOLDER: 'Введите подпись/автора',
+
+  // AUTH RULES
+  AUTH_RULE_PASSWORD: 'Длина не менее восьми (8) символов.\n' +
+    'Используйте как минимум 3 символа из следующих типов символов: (a) заглавные буквы,' +
+    ' (b) строчные буквы, (c) цифры и / или (d) специальные символы.',
+  AUTH_RULE_LOGIN: 'Два слова, разделенных пробелом, длинной не менее двух (2) символов.',
+  AUTH_RULE_EMAIL: 'Адрес электронной почты типа login@domain.zone'
 };
