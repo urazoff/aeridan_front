@@ -47,6 +47,11 @@
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   }
 
+  label {
+    outline: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  }
+
   .page-container {
     position: absolute;
     bottom: 0;
@@ -229,20 +234,24 @@
 
       &.login {
         background: @field-background-color @login-inactive-icon-url no-repeat 8px;
+
         &.ng-invalid.ng-dirty {
           background: @field-background-color @login-invalid-icon-url no-repeat 8px;
         }
-        &:focus,&.ng-valid{
+
+        &:focus, &.ng-valid {
           background: @field-background-color @login-active-icon-url no-repeat 8px;
         }
       }
 
       &.email {
         background: @field-background-color @email-inactive-icon-url no-repeat 8px;
+
         &.ng-invalid.ng-dirty {
           background: @field-background-color @email-invalid-icon-url no-repeat 8px;
         }
-        &:focus,&.ng-valid{
+
+        &:focus, &.ng-valid {
           background: @field-background-color @email-active-icon-url no-repeat 8px;
         }
       }
@@ -250,15 +259,19 @@
       &.password {
         background: @field-background-color @password-inactive-icon-url no-repeat 8px;
         padding: 0 40px 0 40px;
+
         &.ng-invalid.ng-dirty {
           background: @field-background-color @password-invalid-icon-url no-repeat 8px;
         }
-        &:focus,&.ng-valid{
+
+        &:focus, &.ng-valid {
           background: @field-background-color @password-active-icon-url no-repeat 8px;
         }
-        +.password-preview {
+
+        + .password-preview {
           display: none;
-          +label {
+
+          + label {
             display: inline-block;
             position: absolute;
             bottom: 0;
@@ -273,17 +286,20 @@
             //  background: @password-preview-active-url 8px no-repeat;
             //}
           }
-          &:checked+label {
+
+          &:checked + label {
             background: @password-preview-active-url 8px no-repeat;
           }
         }
       }
 
     }
+
     .password-block {
       position: relative;
       //display: flex;
     }
+
     .button {
       display: flex;
       align-items: center;
@@ -297,9 +313,11 @@
       cursor: pointer;
       color: @button-text-color;
       .mxn-transition(@transition-property);
+
       &:hover {
         background-color: darken(@button-background-color, 10%);
       }
+
       &.disabled {
         background-color: lighten(@button-background-color, 20%);
         cursor: auto;
