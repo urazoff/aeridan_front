@@ -54,8 +54,10 @@ export class LanguageService {
     }
     if (dictionary[word]) {
       return dictionary[word];
-    } else {
+    } else if (this.getDictionary(this.defaultLang)[word]) {
       return this.getDictionary(this.defaultLang)[word];
+    } else {
+      return word;
     }
   }
 }

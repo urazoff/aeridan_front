@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Form, FormControl, FormGroup, Validators} from '@angular/forms';
 import {LanguageService} from '../localization/language.service';
+import {Title} from '@angular/platform-browser';
+import {TitleGeneratorService} from '../title-generator/title-generator.service';
 
 @Component({
   selector: 'app-login-page',
@@ -12,7 +14,7 @@ export class LoginPageComponent implements OnInit {
   signUp: FormGroup;
   signIn: FormGroup;
 
-  constructor(public lang: LanguageService) {
+  constructor(public lang: LanguageService, title: TitleGeneratorService) {
     this.switch = new FormGroup({
       authtype: new FormControl('login')
     });
@@ -31,6 +33,8 @@ export class LoginPageComponent implements OnInit {
       remember: new FormControl(),
       'password-preview': new FormControl(false)
     });
+
+    title.setTitle('TITLE_LOGIN_PAGE');
   }
 
   ngOnInit() {

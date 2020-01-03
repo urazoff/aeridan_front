@@ -35,5 +35,12 @@ export default {
     'Use at least 3 of the following types of characters: (a) uppercase letters,' +
     ' (b) lowercase letters, (c) numbers, and/or (d) special characters',
   AUTH_RULE_LOGIN: 'Two words, separated by a space, at least two (2) characters long.',
-  AUTH_RULE_EMAIL: 'Email address like login@domain.zone'
+  AUTH_RULE_EMAIL: 'Email address like login@domain.zone',
+  // PAGES' TITLES
+  TITLE_PROJECT: 'Aeridan',
+  TITLE_LOGIN_PAGE: 'Login',
+  TITLE_CREATE_ARTICLE_PAGE: 'Create article',
+  TITLE_EDIT_ARTICLE_PAGE: 'Edit article',
+  TITLE_ARTICLE_PAGE: 'Article',
+  TITLE_NOT_FOUND_PAGE: '404'
 };

@@ -4,6 +4,7 @@ import {Subscription} from 'rxjs';
 import {IArticle} from '../interfaces/IArticle';
 import {ArticleDataService} from '../article-data.service';
 import {LanguageService} from '../localization/language.service';
+import {TitleGeneratorService} from '../title-generator/title-generator.service';
 
 @Component({
   selector: 'app-article-page',
@@ -19,13 +20,14 @@ export class ArticlePageComponent implements OnInit {
 
   // @ViewChild('articleContainer') articleContainer: TemplateRef;
   constructor(private activatedRoute: ActivatedRoute, private articleDataService: ArticleDataService, private router: Router,
-              public lang: LanguageService) {
+              public lang: LanguageService, public title: TitleGeneratorService) {
 
     this.subscription = this.activatedRoute.params.subscribe(params => {
       this.id = params.id;
       this.articleDataService.getArticle(this.id).then((data: IArticle) => {
         this.data = data;
         this.isArticleReceived = true;
+        this.title.setTitle('TITLE_ARTICLE_PAGE', data.layout.title);
       }).catch((error) => {
         this.router.navigate(
           ['/notfound'],
