@@ -42,5 +42,19 @@ export default {
   TITLE_CREATE_ARTICLE_PAGE: 'Create article',
   TITLE_EDIT_ARTICLE_PAGE: 'Edit article',
   TITLE_ARTICLE_PAGE: 'Article',
-  TITLE_NOT_FOUND_PAGE: '404'
+  TITLE_NOT_FOUND_PAGE: '404',
+  // LOGIN PAGE
+  LOGIN_PAGE_SIGN_UP_BUTTON: 'Sign Up',
+  LOGIN_PAGE_SIGN_IN_BUTTON: 'Sign In',
+  LOGIN_PAGE_SIGN_UP_SWITCH: 'Registration',
+  LOGIN_PAGE_SIGN_IN_SWITCH: 'Login',
+  LOGIN_PAGE_EMAIL_PLACEHOLDER: 'Email',
+  LOGIN_PAGE_PASSWORD_PLACEHOLDER: 'Password',
+  LOGIN_PAGE_LOGIN_PLACEHOLDER: 'Name and surname',
+  LOGIN_PAGE_REMEMBER_ME: 'Remember You?',
+  LOGIN_PAGE_ANOTHER_AUTH_LABEL: 'or login via',
+  LOGIN_PAGE_TERMS: 'By clicking on the “%%0%%” button,<br>' +
+    'You agree to the <a href="%%1%%">Terms</a>, ' +
+    '<a href="%%2%%">Data Policy</a> and ' +
+    '<a href="%%3%%">Cookie Policy</a>.'
 };

@@ -47,17 +47,23 @@ export class LanguageService {
     this.dictionary = this.getDictionary(this.userLang);
   }
 
-  translate(word: string) {
+  translate(word: string, ...additional: Array<string>) {
     let dictionary = this.dictionary;
+    let result = '';
     if (!dictionary) {
       dictionary = this.getDictionary(this.getUserLang());
     }
     if (dictionary[word]) {
-      return dictionary[word];
+      result = dictionary[word];
     } else if (this.getDictionary(this.defaultLang)[word]) {
-      return this.getDictionary(this.defaultLang)[word];
+      result = this.getDictionary(this.defaultLang)[word];
     } else {
-      return word;
+      result = word;
     }
+    if (additional.length > 0) {
+      // tslint:disable-next-line:radix
+      result = result.replace(/%%(\d+)%%/gm, (match, p1) => additional[Number.parseInt(p1)]);
+    }
+    return result;
   }
 }

@@ -12,37 +12,46 @@
             <div [ngClass]="'field switch'">
 
               <input type="radio" [value]="'login'" id="switch-login" [formControlName]="'authtype'">
-              <label for="switch-login">Вход</label>
+              <label for="switch-login">{{lang.translate('LOGIN_PAGE_SIGN_IN_SWITCH')}}</label>
               <input type="radio" [value]="'registration'" id="switch-registration" checked="checked"
                      [formControlName]="'authtype'">
-              <label for="switch-registration">Регистрация</label>
+              <label for="switch-registration">{{lang.translate('LOGIN_PAGE_SIGN_UP_SWITCH')}}</label>
 
             </div>
           </form>
           <form [formGroup]="signUp" *ngIf="switch.get('authtype').value === 'registration'">
             <div [ngClass]="'fields'">
-              <input [ngClass]="'field icon login'" type="text" placeholder="Имя и фамилия" formControlName="login"
+              <input [ngClass]="'field icon login'" type="text"
+                     placeholder="{{lang.translate('LOGIN_PAGE_LOGIN_PLACEHOLDER')}}" formControlName="login"
                      [title]="lang.translate('AUTH_RULE_LOGIN')">
-              <input [ngClass]="'field icon email'" type="email" placeholder="Email" formControlName="email"
+              <input [ngClass]="'field icon email'" type="email"
+                     placeholder="{{lang.translate('LOGIN_PAGE_EMAIL_PLACEHOLDER')}}" formControlName="email"
                      [title]="lang.translate('AUTH_RULE_EMAIL')">
               <div [ngClass]="'password-block'">
-                <input [ngClass]="'field icon password'" [type]="signUp.get('password-preview').value ? 'text':'password'" placeholder="Пароль"
-                     formControlName="password"
-                     [title]="lang.translate('AUTH_RULE_PASSWORD')">
-                <input type="checkbox" [ngClass]="'password-preview'" id="password-preview" formControlName="password-preview">
+                <input [ngClass]="'field icon password'"
+                       [type]="signUp.get('password-preview').value ? 'text':'password'"
+                       placeholder="{{lang.translate('LOGIN_PAGE_PASSWORD_PLACEHOLDER')}}"
+                       formControlName="password"
+                       [title]="lang.translate('AUTH_RULE_PASSWORD')">
+                <input type="checkbox" [ngClass]="'password-preview'" id="password-preview"
+                       formControlName="password-preview">
                 <label for="password-preview"></label>
               </div>
             </div>
           </form>
           <form [formGroup]="signIn" *ngIf="switch.get('authtype').value === 'login'">
             <div [ngClass]="'fields'">
-              <input [ngClass]="'field icon email'" type="email" placeholder="Email" formControlName="email"
+              <input [ngClass]="'field icon email'" type="email"
+                     placeholder="{{lang.translate('LOGIN_PAGE_EMAIL_PLACEHOLDER')}}" formControlName="email"
                      [title]="lang.translate('AUTH_RULE_EMAIL')">
               <div [ngClass]="'password-block'">
-                <input [ngClass]="'field icon password'" [type]="signIn.get('password-preview').value ? 'text':'password'" placeholder="Пароль"
+                <input [ngClass]="'field icon password'"
+                       [type]="signIn.get('password-preview').value ? 'text':'password'"
+                       placeholder="{{lang.translate('LOGIN_PAGE_PASSWORD_PLACEHOLDER')}}"
                        formControlName="password"
                        [title]="lang.translate('AUTH_RULE_PASSWORD')">
-                <input type="checkbox" [ngClass]="'password-preview'" id="password-preview2" formControlName="password-preview">
+                <input type="checkbox" [ngClass]="'password-preview'" id="password-preview2"
+                       formControlName="password-preview">
                 <label for="password-preview2"></label>
               </div>
               <input [ngClass]="'remember'" type="checkbox" id="login-remember-me" formControlName="remember">
@@ -50,23 +59,24 @@
                 <div [ngClass]="'background'">
                   <div [ngClass]="'circle'"></div>
                 </div>
-                Запомнить Вас?
+                {{lang.translate('LOGIN_PAGE_REMEMBER_ME')}}
               </label>
             </div>
           </form>
           <div [ngClass]="{
             'button': true,
             'disabled': signUp.invalid
-          }" *ngIf="switch.get('authtype').value === 'registration'">Регистрация
+          }" *ngIf="switch.get('authtype').value === 'registration'">{{lang.translate('LOGIN_PAGE_SIGN_UP_BUTTON')}}
           </div>
           <div [ngClass]="{
             'button': true,
             'disabled': signIn.invalid
-          }" *ngIf="switch.get('authtype').value === 'login'">Войти</div>
+          }" *ngIf="switch.get('authtype').value === 'login'">{{lang.translate('LOGIN_PAGE_SIGN_IN_BUTTON')}}
+          </div>
           <div [ngClass]="'another-auth'">
             <div [ngClass]="'line-label'">
               <div [ngClass]="'line'"></div>
-              <div [ngClass]="'label'">или авторизуйтесь через</div>
+              <div [ngClass]="'label'">{{lang.translate('LOGIN_PAGE_ANOTHER_AUTH_LABEL')}}</div>
               <div [ngClass]="'line'"></div>
             </div>
             <div [ngClass]="'login-methods'">
@@ -78,13 +88,9 @@
           </div>
         </div>
       </div>
-      <div [ngClass]="'registration-terms-block'" *ngIf="switch.get('authtype').value === 'registration'">
-        Нажимая кнопку “Регистрация”, Вы соглашаетесь с &nbsp;<a href="#">Условиями, Политикой использования данных</a>
-        &nbsp;и&nbsp;<a href="#"> Политикой в отношении файлов cookie.</a>
-      </div>
-      <div [ngClass]="'registration-terms-block'" *ngIf="switch.get('authtype').value === 'login'">
-        Нажимая кнопку “Войти”, Вы соглашаетесь с &nbsp;<a href="#">Условиями, Политикой использования данных</a>
-        &nbsp;и&nbsp;<a href="#"> Политикой в отношении файлов cookie.</a>
+      <div [ngClass]="'registration-terms-block'"
+           [innerHTML]="lang.translate('LOGIN_PAGE_TERMS',
+           lang.translate(switch.get('authtype').value === 'login' ? 'LOGIN_PAGE_SIGN_IN_BUTTON' : 'LOGIN_PAGE_SIGN_UP_BUTTON'), '#', '#', '#') | safeHtml">
       </div>
     </div>
   </div>

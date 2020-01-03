@@ -32,6 +32,7 @@ import { CopyButtonComponent } from './copy-button/copy-button.component';
 import { DelimiterComponent } from './article-renderer/delimiter/delimiter.component';
 import { PageContainerComponent } from './page-container/page-container.component';
 import { LoginPageComponent } from './login-page/login-page.component';
+import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { LoginPageComponent } from './login-page/login-page.component';
     DelimiterComponent,
     PageContainerComponent,
     LoginPageComponent,
+    SafeHtmlPipe,
   ],
   imports: [
     BrowserModule,

@@ -42,5 +42,19 @@ export default {
   TITLE_CREATE_ARTICLE_PAGE: 'Создание статьи',
   TITLE_EDIT_ARTICLE_PAGE: 'Редактирование статьи',
   TITLE_ARTICLE_PAGE: 'Статья',
-  TITLE_NOT_FOUND_PAGE: '404'
+  TITLE_NOT_FOUND_PAGE: '404',
+  // LOGIN PAGE
+  LOGIN_PAGE_SIGN_UP_BUTTON: 'Зарегистироваться',
+  LOGIN_PAGE_SIGN_IN_BUTTON: 'Войти',
+  LOGIN_PAGE_SIGN_UP_SWITCH: 'Регистрация',
+  LOGIN_PAGE_SIGN_IN_SWITCH: 'Вход',
+  LOGIN_PAGE_EMAIL_PLACEHOLDER: 'Email',
+  LOGIN_PAGE_PASSWORD_PLACEHOLDER: 'Пароль',
+  LOGIN_PAGE_LOGIN_PLACEHOLDER: 'Имя и фамилия',
+  LOGIN_PAGE_REMEMBER_ME: 'Запомнить Вас?',
+  LOGIN_PAGE_ANOTHER_AUTH_LABEL: 'или авторизуйтесь через',
+  LOGIN_PAGE_TERMS: 'Нажимая кнопку “%%0%%”, ' +
+    'Вы соглашаетесь с <a href="%%1%%">Условиями</a>, ' +
+    '<a href="%%2%%">Политикой использования данных</a> и ' +
+    '<a href="%%3%%">Политикой в отношении файлов cookie</a>.'
 };

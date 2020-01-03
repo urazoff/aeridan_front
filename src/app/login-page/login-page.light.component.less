@@ -387,13 +387,14 @@
     text-align: center;
     font-size: @terms-font-size;
     line-height: @terms-line-height;
+    ::ng-deep {
+      a {
+        color: @button-background-color;
+        text-decoration: none;
 
-    a {
-      color: @button-background-color;
-      text-decoration: none;
-
-      &:hover {
-        color: darken(@button-background-color, 10%);
+        &:hover {
+          color: darken(@button-background-color, 10%);
+        }
       }
     }
 
