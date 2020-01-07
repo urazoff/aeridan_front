@@ -63,7 +63,7 @@ export class EditorComponent implements OnInit {
           buttonContent: this.lang.translate('IMAGE_TOOL_BUTTON_CONTENT'),
           errorMessage: this.lang.translate('IMAGE_TOOL_ERROR_MESSAGE'),
           endpoints: {
-            byFile: 'https://dilshod.xyz/api/v1/image/upload', // Your backend file uploader endpoint
+            byFile: 'https://dilshod.xyz:3000/api/v1/image/upload', // Your backend file uploader endpoint
             // byUrl: 'http://localhost:8008/fetchUrl', // Your endpoint that provides uploading by Url
           }
         }
@@ -72,7 +72,7 @@ export class EditorComponent implements OnInit {
         class: Link,
         config: {
           title: this.lang.translate('LINK_TOOL_TITLE'),
-          endpoint: 'https://dilshod.xyz/api/v1/link', // Your backend endpoint for url data fetching
+          endpoint: 'https://dilshod.xyz:3000/api/v1/link', // Your backend endpoint for url data fetching
           placeholder: this.lang.translate('LINK_TOOL_PLACEHOLDER')
         }
       },

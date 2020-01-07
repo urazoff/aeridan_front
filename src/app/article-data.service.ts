@@ -13,7 +13,7 @@ export class ArticleDataService {
    * @returns An `Observable` of the response, with the response body as a JSON object.
    */
   send(data: object) {
-    return this.http.post('https://dilshod.xyz/api/v1/article', data);
+    return this.http.post('https://dilshod.xyz:3000/api/v1/article', data);
   }
 
   /**
@@ -22,7 +22,7 @@ export class ArticleDataService {
    * @returns An `Observable` of the response, with the response body as a JSON object.
    */
   get(id: number) {
-    return this.http.get(`https://dilshod.xyz/api/v1/article/get/${id}`);
+    return this.http.get(`https://dilshod.xyz:3000/api/v1/article/get/${id}`);
   }
 
   /**
@@ -32,7 +32,7 @@ export class ArticleDataService {
    * @returns An `Observable` of the response, with the response body as a JSON object.
    */
   update(id: number, data: object) {
-    return this.http.patch(`https://dilshod.xyz/api/v1/article/update/${id}`, data);
+    return this.http.patch(`https://dilshod.xyz:3000/api/v1/article/update/${id}`, data);
   }
 
   /**
