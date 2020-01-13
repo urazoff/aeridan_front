@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {IArticleTable} from '../interfaces/iarticle-table';
+import {IArticleTable} from '../_interfaces/iarticle-table';
 
 @Component({
   selector: 'app-table',

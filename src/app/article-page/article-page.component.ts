@@ -1,8 +1,8 @@
 import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Subscription} from 'rxjs';
-import {IArticle} from '../interfaces/IArticle';
-import {ArticleDataService} from '../article-data.service';
+import {IArticle} from '../_interfaces/IArticle';
+import {ArticleDataService} from '../_requests/article-data.service';
 import {LanguageService} from '../localization/language.service';
 import {TitleGeneratorService} from '../title-generator/title-generator.service';
 
@@ -12,7 +12,7 @@ import {TitleGeneratorService} from '../title-generator/title-generator.service'
   styleUrls: ['./article-page.component.less']
 })
 export class ArticlePageComponent implements OnInit {
-  id: number;
+  id: string;
   language: string;
   data: IArticle;
   isArticleReceived: boolean = false;

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {IArticleList} from '../interfaces/iarticle-list';
+import {IArticleList} from '../_interfaces/iarticle-list';
 
 @Component({
   selector: 'app-list',

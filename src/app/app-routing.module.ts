@@ -5,10 +5,11 @@ import { ArticlePageComponent } from './article-page/article-page.component';
 import {NotFoundComponent} from './not-found/not-found.component';
 import {PageContainerComponent} from './page-container/page-container.component';
 import {LoginPageComponent} from './login-page/login-page.component';
+import {AuthorizationGuard} from './_guards/authorization.guard';
 
 const pagesRoutes = [
-  { path: '', component: EditorPageComponent },
-  { path: 'edit/:id', component: EditorPageComponent },
+  { path: '', component: EditorPageComponent, canActivate: [AuthorizationGuard] },
+  { path: 'edit/:id', component: EditorPageComponent, canActivate: [AuthorizationGuard]},
   { path: 'articles/:id', component: ArticlePageComponent },
   { path: 'login', component: LoginPageComponent }
 ];

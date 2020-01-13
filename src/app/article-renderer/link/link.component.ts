@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {IArticleLink} from '../interfaces/iarticle-link';
+import {IArticleLink} from '../_interfaces/iarticle-link';
 
 @Component({
   selector: 'app-link',

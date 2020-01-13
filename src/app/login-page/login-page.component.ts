@@ -3,6 +3,10 @@ import {Form, FormControl, FormGroup, Validators} from '@angular/forms';
 import {LanguageService} from '../localization/language.service';
 import {Title} from '@angular/platform-browser';
 import {TitleGeneratorService} from '../title-generator/title-generator.service';
+import {Subscription} from 'rxjs';
+import {ActivatedRoute, Router} from '@angular/router';
+import {AuthorizationService} from '../_requests/authorization.service';
+import {NavigatorService} from '../_services/navigator.service';
 
 @Component({
   selector: 'app-login-page',
@@ -13,8 +17,11 @@ export class LoginPageComponent implements OnInit {
   switch: FormGroup;
   signUp: FormGroup;
   signIn: FormGroup;
+  private querySubscription: Subscription;
+  redirectUrl: string;
 
-  constructor(public lang: LanguageService, title: TitleGeneratorService) {
+  constructor(public lang: LanguageService, title: TitleGeneratorService, private route: ActivatedRoute, public auth: AuthorizationService,
+              public nav: NavigatorService) {
     this.switch = new FormGroup({
       authtype: new FormControl('login')
     });
@@ -30,11 +37,35 @@ export class LoginPageComponent implements OnInit {
     this.signIn = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [Validators.required, passwordValidator]),
-      remember: new FormControl(),
+      remember: new FormControl(false),
       'password-preview': new FormControl(false)
     });
 
     title.setTitle('TITLE_LOGIN_PAGE');
+
+    this.querySubscription = route.queryParams.subscribe(
+      (queryParam) => {
+        if (queryParam.redirectUrl) {
+          this.redirectUrl = queryParam.redirectUrl;
+        } else {
+          this.redirectUrl = '/';
+        }
+      }
+    );
+  }
+
+  login() {
+    if (this.signIn.valid) {
+      this.auth.login(this.signIn.get('email').value, this.signIn.get('password').value, this.signIn.get('remember').value);
+      this.nav.toHref(this.redirectUrl);
+    }
+  }
+
+  register() {
+    if (this.signUp.valid) {
+      this.auth.register(this.signUp.get('email').value, this.signUp.get('login').value, this.signUp.get('password').value);
+      this.nav.toHref(this.redirectUrl);
+    }
   }
 
   ngOnInit() {

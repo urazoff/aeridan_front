@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {IArticle} from './interfaces/IArticle';
+import {IArticle} from '../_interfaces/IArticle';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +21,7 @@ export class ArticleDataService {
    * @param id id статьи.
    * @returns An `Observable` of the response, with the response body as a JSON object.
    */
-  get(id: number) {
+  get(id: string) {
     return this.http.get(`https://dilshod.xyz/api/v1/article/get/${id}`);
   }
 
@@ -31,7 +31,7 @@ export class ArticleDataService {
    * @param data Объект статьи.
    * @returns An `Observable` of the response, with the response body as a JSON object.
    */
-  update(id: number, data: object) {
+  update(id: string, data: object) {
     return this.http.patch(`https://dilshod.xyz/api/v1/article/update/${id}`, data);
   }
 
@@ -40,7 +40,7 @@ export class ArticleDataService {
    * @param id id статьи.
    * @returns `Promise` объект, возвращающий либо `IArticle` объект статьи, либо ошибку.
    */
-  getArticle(id: number) {
+  getArticle(id: string) {
     return new Promise((resolve, reject) => {
       this.get(id)
         .subscribe(

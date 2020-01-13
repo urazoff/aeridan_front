@@ -1,4 +1,4 @@
-import {IArticleBlock} from './iarticle-block';
+import {IArticleBlock} from './IArticleBlock';
 
 export interface IArticleLayout {
     title: string;
@@ -9,7 +9,7 @@ export interface IArticleLayout {
 export interface IArticle {
     createdAt: number;
     updatedAt: number;
-    id: number;
+    id: string;
     layout: IArticleLayout;
     owner: object;
 }

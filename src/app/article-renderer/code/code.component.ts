@@ -1,6 +1,6 @@
 import {AfterViewInit, ChangeDetectorRef, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
-import {IArticleHeader} from '../interfaces/iarticle-header';
-import {IArticleCode} from '../interfaces/iarticle-code';
+import {IArticleHeader} from '../_interfaces/iarticle-header';
+import {IArticleCode} from '../_interfaces/iarticle-code';
 import hljs from 'highlight.js';
 import {LanguageService} from '../../localization/language.service';
 

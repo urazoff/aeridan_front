@@ -19,7 +19,8 @@
 
             </div>
           </form>
-          <form [formGroup]="signUp" *ngIf="switch.get('authtype').value === 'registration'">
+          <form [ngClass]="'auth-form'" [formGroup]="signUp" *ngIf="switch.get('authtype').value === 'registration'"
+                (ngSubmit)="register()" id="reg-form">
             <div [ngClass]="'fields'">
               <input [ngClass]="'field icon login'" type="text"
                      placeholder="{{lang.translate('LOGIN_PAGE_LOGIN_PLACEHOLDER')}}" formControlName="login"
@@ -38,8 +39,16 @@
                 <label for="password-preview"></label>
               </div>
             </div>
+
           </form>
-          <form [formGroup]="signIn" *ngIf="switch.get('authtype').value === 'login'">
+
+          <input type="submit" form="reg-form" [ngClass]="{
+            'button': true
+          }" [disabled]="signUp.invalid" [value]="lang.translate('LOGIN_PAGE_SIGN_UP_BUTTON')"
+                 *ngIf="switch.get('authtype').value === 'registration'">
+
+          <form [ngClass]="'auth-form'" [formGroup]="signIn" *ngIf="switch.get('authtype').value === 'login'"
+                (ngSubmit)="login()">
             <div [ngClass]="'fields'">
               <input [ngClass]="'field icon email'" type="email"
                      placeholder="{{lang.translate('LOGIN_PAGE_EMAIL_PLACEHOLDER')}}" formControlName="email"
@@ -63,16 +72,13 @@
               </label>
             </div>
           </form>
-          <div [ngClass]="{
-            'button': true,
-            'disabled': signUp.invalid
-          }" *ngIf="switch.get('authtype').value === 'registration'">{{lang.translate('LOGIN_PAGE_SIGN_UP_BUTTON')}}
-          </div>
-          <div [ngClass]="{
-            'button': true,
-            'disabled': signIn.invalid
-          }" *ngIf="switch.get('authtype').value === 'login'">{{lang.translate('LOGIN_PAGE_SIGN_IN_BUTTON')}}
-          </div>
+
+          <input type="submit" [ngClass]="{
+            'button': true
+          }" [disabled]="signIn.invalid" [value]="lang.translate('LOGIN_PAGE_SIGN_IN_BUTTON')"
+                 *ngIf="switch.get('authtype').value === 'login'" (click)="login()">
+
+
           <div [ngClass]="'another-auth'">
             <div [ngClass]="'line-label'">
               <div [ngClass]="'line'"></div>

@@ -1,6 +1,6 @@
 import {AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import SERVICES from '../../editor/plugins/embed/src/services';
-import {IArticleEmbed} from '../interfaces/iarticle-embed';
+import {IArticleEmbed} from '../_interfaces/iarticle-embed';
 
 @Component({
   selector: 'app-embed',

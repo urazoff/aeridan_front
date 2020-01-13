@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {IArticleKatex} from '../interfaces/iarticle-katex';
+import {IArticleKatex} from '../_interfaces/iarticle-katex';
 
 @Component({
   selector: 'app-latex',

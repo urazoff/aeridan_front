@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {IArticleParagraph} from '../interfaces/iarticle-paragraph';
+import {IArticleParagraph} from '../_interfaces/iarticle-paragraph';
 
 @Component({
   selector: 'app-paragraph',

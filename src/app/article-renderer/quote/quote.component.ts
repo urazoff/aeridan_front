@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {IArticleQuote} from '../interfaces/iarticle-quote';
+import {IArticleQuote} from '../_interfaces/iarticle-quote';
 
 @Component({
   selector: 'app-quote',

@@ -32,7 +32,8 @@ import { CopyButtonComponent } from './copy-button/copy-button.component';
 import { DelimiterComponent } from './article-renderer/delimiter/delimiter.component';
 import { PageContainerComponent } from './page-container/page-container.component';
 import { LoginPageComponent } from './login-page/login-page.component';
-import { SafeHtmlPipe } from './pipes/safe-html.pipe';
+import { SafeHtmlPipe } from './_pipes/safe-html.pipe';
+import { ChangeThemeButtonComponent } from './buttons/change-theme-button/change-theme-button.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { SafeHtmlPipe } from './pipes/safe-html.pipe';
     PageContainerComponent,
     LoginPageComponent,
     SafeHtmlPipe,
+    ChangeThemeButtonComponent,
   ],
   imports: [
     BrowserModule,

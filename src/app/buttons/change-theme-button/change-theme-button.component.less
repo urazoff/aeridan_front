@@ -1,0 +1,16 @@
+.button {
+  display: none;
+}
+.button + label {
+  background: url('/assets/icons/buttons/change-theme/change-theme.inactive.light.svg');
+  cursor: pointer;
+  &:checked {
+    background: url('/assets/icons/buttons/change-theme/change-theme.inactive.dark.svg');
+  }
+  &:hover {
+    background: url('/assets/icons/buttons/change-theme/change-theme.active.light.svg');
+  }
+  &:checked:hover {
+    background: url('/assets/icons/buttons/change-theme/change-theme.active.dark.svg');
+  }
+}

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Subscription} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
-import {IArticle} from '../interfaces/IArticle';
-import {ArticleDataService} from '../article-data.service';
+import {IArticle} from '../_interfaces/IArticle';
+import {ArticleDataService} from '../_requests/article-data.service';
 import {LanguageService} from '../localization/language.service';
 import {TitleGeneratorService} from '../title-generator/title-generator.service';
 
@@ -12,7 +12,7 @@ import {TitleGeneratorService} from '../title-generator/title-generator.service'
   styleUrls: ['./editor-page.component.less']
 })
 export class EditorPageComponent implements OnInit {
-  id?: number = null;
+  id?: string = null;
   language?: string;
   data: IArticle = null;
   isArticleReceived = false;

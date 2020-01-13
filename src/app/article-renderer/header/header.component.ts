@@ -1,7 +1,7 @@
 import {AfterViewInit, ChangeDetectorRef, Component, Inject, Input, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
-import {IArticleHeader} from '../interfaces/iarticle-header';
-import {IArticleRendererBlock} from '../interfaces/iarticle-renderer-block';
-import {IBlockConfig} from '../interfaces/iblock-config';
+import {IArticleHeader} from '../_interfaces/iarticle-header';
+import {IArticleRendererBlock} from '../_interfaces/iarticle-renderer-block';
+import {IBlockConfig} from '../_interfaces/iblock-config';
 
 @Component({
   selector: 'app-header',

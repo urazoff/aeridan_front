@@ -68,7 +68,7 @@ export function getSideByCoords(coords, x, y) {
   let side;
   const sizeArea = 10;
 
-  // a point is close to the boundary if the distance between them is less than the allowed distance.
+  // a point is close to the boundary if the distance between them is _less than the allowed distance.
   // +1px on each side due to fractional pixels
   if (x - coords.x1 >= -1 && x - coords.x1 <= sizeArea + 1) {
     side = 'left';

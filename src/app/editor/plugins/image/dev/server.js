@@ -64,7 +64,7 @@ class ServerExample {
   }
 
   /**
-   * Allows CORS requests for debugging
+   * Allows CORS _requests for debugging
    * @param response
    */
   allowCors(response) {

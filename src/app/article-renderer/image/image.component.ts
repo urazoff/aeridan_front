@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {IArticleImage} from '../interfaces/iarticle-image';
+import {IArticleImage} from '../_interfaces/iarticle-image';
 
 @Component({
   selector: 'app-image',
