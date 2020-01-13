@@ -28,14 +28,15 @@ export class LoginPageComponent implements OnInit {
     const loginValidator = Validators.pattern('[^\\s]{2,} [^\\s]{2,}');
     const passwordValidator = Validators.pattern(
       '(?=^.{8,}$)((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$');
+    const emailValidator =  Validators.pattern('^[-\\w.]+@([A-z0-9][-A-z0-9]+\\.)+[A-z]{2,4}$');
     this.signUp = new FormGroup({
       login: new FormControl('', [Validators.required, loginValidator]),
-      email: new FormControl('', [Validators.required, Validators.email]),
+      email: new FormControl('', [Validators.required, emailValidator]),
       password: new FormControl('', [Validators.required, passwordValidator]),
       'password-preview': new FormControl(false)
     });
     this.signIn = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
+      email: new FormControl('', [Validators.required, emailValidator]),
       password: new FormControl('', [Validators.required, passwordValidator]),
       remember: new FormControl(false),
       'password-preview': new FormControl(false)

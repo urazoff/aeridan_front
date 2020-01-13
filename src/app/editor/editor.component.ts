@@ -152,16 +152,6 @@ export class EditorComponent implements OnInit {
     }
     console.log(this.data);
     this.editor = new EditorJS(this.config);
-    // this.fixFirefoxHeightIssue("article-editor");
-  }
-
-  fixFirefoxHeightIssue(element) {
-    const parent = document.querySelector('#' + element);
-    const contenteditableElements = parent.querySelectorAll('[contenteditable="true"]');
-    contenteditableElements.forEach(el => {
-      (el as HTMLElement).style.minHeight = String(
-        Number((el as HTMLElement).style.fontSize) * Number((el as HTMLElement).style.lineHeight));
-    });
   }
 
   /**
@@ -194,7 +184,6 @@ export class EditorComponent implements OnInit {
     this.error = '';
     this.editor.save().then((article) => {
       return new Promise((resolve, reject) => {
-        // this.editor.render(article).then(result => console.log('Rendered', result));
         const articleLayout: IArticleLayout = {
           title,
           time: article.time,
@@ -206,7 +195,6 @@ export class EditorComponent implements OnInit {
           layout: articleLayout,
           owner: this.ownerId
         };
-        console.log(articleRequest);
         this.httpService.send(articleRequest)
           .subscribe(
             (data: IArticle) => {
@@ -232,7 +220,6 @@ export class EditorComponent implements OnInit {
     this.error = '';
     this.editor.save().then((article) => {
       return new Promise((resolve, reject) => {
-        // this.editor.render(article).then(result => console.log('Rendered', result));
         const articleLayout: IArticleLayout = {
           title,
           time: article.time,
@@ -243,7 +230,6 @@ export class EditorComponent implements OnInit {
         const articleRequest: IArticleRequest = {
           layout: articleLayout,
         };
-        console.log(articleRequest);
         this.httpService.update(this.data.id, articleRequest)
           .subscribe(
             (data: IArticle) => {
@@ -262,10 +248,5 @@ export class EditorComponent implements OnInit {
       console.log('Saving failed', error);
       this.error = error.message;
     });
-    // console.log(this.error)
-  }
-
-  preview() {
-
   }
 }
