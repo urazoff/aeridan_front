@@ -134,13 +134,8 @@ export class EditorComponent implements OnInit {
   title: string;
   editMode = false;
 
-  ownerId: string;
 
-  constructor(private httpService: ArticleDataService, private router: Router, public lang: LanguageService,
-              private auth: AuthorizationService) {
-    auth.getUser().then((user: IUser) => {
-      this.ownerId = user.id;
-    });
+  constructor(private httpService: ArticleDataService, private router: Router, public lang: LanguageService) {
   }
 
   ngOnInit() {
@@ -193,7 +188,6 @@ export class EditorComponent implements OnInit {
         this.validate(articleLayout);
         const articleRequest: IArticleRequest = {
           layout: articleLayout,
-          owner: this.ownerId
         };
         this.httpService.send(articleRequest)
           .subscribe(
