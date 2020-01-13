@@ -204,7 +204,7 @@ export class EditorComponent implements OnInit {
         this.validate(articleLayout);
         const articleRequest: IArticleRequest = {
           layout: articleLayout,
-          owner: 1
+          owner: this.ownerId
         };
         console.log(articleRequest);
         this.httpService.send(articleRequest)
