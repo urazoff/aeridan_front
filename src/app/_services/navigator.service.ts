@@ -7,12 +7,12 @@ import {Router} from '@angular/router';
 })
 export class NavigatorService {
 
-  constructor(public router: Router) {
+  constructor(public router: Router, private lang: LanguageService) {
   }
 
-  to(lang: LanguageService, url, navExtras: object = {}) {
+  to(url, navExtras: object = {}) {
     this.router.navigate(
-      [`/${lang.getUserLang()}${url}`],
+      [`/${this.lang.userLang}${url}`],
       navExtras
     );
   }

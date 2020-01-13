@@ -1,4 +1,5 @@
 import {IArticleBlock} from './IArticleBlock';
+import {IUser} from './IUser';
 
 export interface IArticleLayout {
     title: string;
@@ -11,6 +12,6 @@ export interface IArticle {
     updatedAt: number;
     id: string;
     layout: IArticleLayout;
-    owner: object;
+    owner: IUser;
 }
 

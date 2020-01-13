@@ -4,6 +4,7 @@ import {Observable, Subscription} from 'rxjs';
 import {NavigatorService} from '../_services/navigator.service';
 import {LanguageService} from '../localization/language.service';
 import {AuthorizationService} from '../_requests/authorization.service';
+import {IUser} from '../_interfaces/IUser';
 
 @Injectable({
   providedIn: 'root'
@@ -15,11 +16,11 @@ export class AuthorizationGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return this.auth.getUser().then((response) => {
+    return this.auth.getUser().then((response: IUser) => {
       if (response !== null && Object.keys(response).length > 0) {
         return true;
       }
-      this.nav.to(this.lang, '/login', {queryParams: {redirectUrl: state.url}});
+      this.nav.to('/login', {queryParams: {redirectUrl: state.url}});
       return false;
     });
   }

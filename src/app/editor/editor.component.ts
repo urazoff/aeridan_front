@@ -19,6 +19,8 @@ import {IArticleRequest} from '../_interfaces/IArticleRequest';
 import {Router} from '@angular/router';
 import {EmptyArticleBlocksError, EmptyTitleError} from '../errors/ArticleSaveErrors';
 import {LanguageService} from '../localization/language.service';
+import {AuthorizationService} from '../_requests/authorization.service';
+import {IUser} from '../_interfaces/IUser';
 
 @Component({
   selector: 'app-editor',
@@ -131,8 +133,16 @@ export class EditorComponent implements OnInit {
   error = '';
   title: string;
   editMode = false;
-  constructor(private httpService: ArticleDataService, private router: Router, public lang: LanguageService) {
+
+  ownerId: string;
+
+  constructor(private httpService: ArticleDataService, private router: Router, public lang: LanguageService,
+              private auth: AuthorizationService) {
+    auth.getUser().then((user: IUser) => {
+      this.ownerId = user.id;
+    });
   }
+
   ngOnInit() {
     if (this.data) {
       this.title = this.data.layout.title;
@@ -217,6 +227,7 @@ export class EditorComponent implements OnInit {
     });
     // console.log(this.error)
   }
+
   update(title = this.title) {
     this.error = '';
     this.editor.save().then((article) => {
