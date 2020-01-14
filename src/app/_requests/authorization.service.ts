@@ -36,7 +36,20 @@ export class AuthorizationService {
         );
     });
   }
-
+  loginWithGithub() {
+    return new Promise((resolve, reject) => {
+      this.http.get('https://dilshod.xyz/api/v1/github')
+        .subscribe(
+          (response) => {
+            console.log(response);
+            resolve(response);
+          },
+          (error) => {
+            reject(error);
+          }
+        );
+    });
+  }
   logout() {
     return new Promise((resolve, reject) => {
       this.http.get('https://dilshod.xyz/api/v1/logout')

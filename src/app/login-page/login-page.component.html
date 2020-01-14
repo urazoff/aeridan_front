@@ -89,7 +89,7 @@
               <div [ngClass]="'facebook login-method'"></div>
               <div [ngClass]="'google login-method'"></div>
               <div [ngClass]="'vk login-method'"></div>
-              <a href="https://dilshod.xyz/api/v1/github"><div [ngClass]="'github login-method'"></div></a>
+              <div [ngClass]="'github login-method'" (click)="auth.loginWithGithub()"></div>
             </div>
           </div>
         </div>
