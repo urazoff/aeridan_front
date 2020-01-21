@@ -70,8 +70,11 @@ export class LoginPageComponent implements OnInit {
   }
 
   openAuthWindow(url: string, windowName: string) {
-    const authWindow = window.open(url, windowName);
-    console.log(authWindow.location);
+    const authWindow = window.open(url, windowName, "width=200,height=200");
+    console.log(authWindow.document.body.innerText);
+    setTimeout(() => {
+      console.log(authWindow.document.body.innerText);
+    }, 10000)
     authWindow.addEventListener('load', (event) => {
       console.log(authWindow.location);
     });
