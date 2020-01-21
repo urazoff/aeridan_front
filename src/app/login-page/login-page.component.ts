@@ -69,6 +69,14 @@ export class LoginPageComponent implements OnInit {
     }
   }
 
+  openAuthWindow(url: string, windowName: string) {
+    const authWindow = window.open(url, windowName);
+    console.log(authWindow.location);
+    authWindow.addEventListener('load', (event) => {
+      console.log(authWindow.location);
+    });
+  }
+
   ngOnInit() {
   }
 
