@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {Form, FormControl, FormGroup, Validators} from '@angular/forms';
+import {AbstractControl, Form, FormControl, FormGroup, Validators} from '@angular/forms';
 import {LanguageService} from '../localization/language.service';
 import {Title} from '@angular/platform-browser';
 import {TitleGeneratorService} from '../title-generator/title-generator.service';
@@ -19,6 +19,7 @@ export class LoginPageComponent implements OnInit {
   signIn: FormGroup;
   private querySubscription: Subscription;
   redirectUrl: string;
+  message: string;
 
   constructor(public lang: LanguageService, title: TitleGeneratorService, private route: ActivatedRoute, public auth: AuthorizationService,
               public nav: NavigatorService) {
@@ -53,6 +54,15 @@ export class LoginPageComponent implements OnInit {
         }
       }
     );
+    window.addEventListener('message', (event) => {
+      if (event.origin === 'https://dilshod.xyz') {
+        if (event.data !== 'AUTH_DONE') {
+          this.message = event.data;
+        } else {
+          this.nav.toHref(this.redirectUrl);
+        }
+      }
+    });
   }
 
   login() {
@@ -70,14 +80,18 @@ export class LoginPageComponent implements OnInit {
   }
 
   openAuthWindow(url: string, windowName: string) {
-    const authWindow = window.open(url, windowName, "width=200,height=200");
-    console.log(authWindow.document.body.innerText);
-    setTimeout(() => {
-      console.log(authWindow.document.body.innerText);
-    }, 10000)
-    authWindow.addEventListener('load', (event) => {
-      console.log(authWindow.location);
-    });
+    const authWindow = window.open(url, windowName);
+  }
+
+  getErrors(field: AbstractControl, ruleCode: string) {
+    const result = [];
+    if (field.invalid && field.touched && !field.value) {
+      result.push('AUTH_ERR_EMPTY_FIELD');
+    }
+    if (field.invalid && field.touched && field.dirty) {
+      result.push(ruleCode);
+    }
+    return result;
   }
 
   ngOnInit() {

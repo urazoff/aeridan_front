@@ -34,6 +34,9 @@ import { PageContainerComponent } from './page-container/page-container.componen
 import { LoginPageComponent } from './login-page/login-page.component';
 import { SafeHtmlPipe } from './_pipes/safe-html.pipe';
 import { ChangeThemeButtonComponent } from './buttons/change-theme-button/change-theme-button.component';
+import { ChangeLanguageButtonComponent } from './buttons/change-language-button/change-language-button.component';
+import { LoginCallbackPageComponent } from './login-callback-page/login-callback-page.component';
+import { LoginPageErrorListComponent } from './login-page/login-page-error-list/login-page-error-list.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +69,9 @@ import { ChangeThemeButtonComponent } from './buttons/change-theme-button/change
     LoginPageComponent,
     SafeHtmlPipe,
     ChangeThemeButtonComponent,
+    ChangeLanguageButtonComponent,
+    LoginCallbackPageComponent,
+    LoginPageErrorListComponent,
   ],
   imports: [
     BrowserModule,

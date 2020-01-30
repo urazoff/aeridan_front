@@ -1,5 +1,5 @@
 @import "../_less/mixins/animation";
-
+@import "../_less/mixins/flex";
 @logo-url: url("/assets/logo/logo.light.svg");
 // auth icons
 @login-inactive-icon-url: url("/assets/icons/auth/login.inactive.light.svg");
@@ -72,15 +72,14 @@
 
   .main-block {
     display: flex;
+    //justify-content: center;
     flex-direction: column;
     position: relative;
     min-height: 600px;
     bottom: 0;
     top: 0;
     width: @page-width;
-    justify-content: center;
-    align-items: center;
-    padding-bottom: 20px;
+    //padding-bottom: 20px;
   }
 
   .login-registration-block {
@@ -94,7 +93,12 @@
       justify-content: space-between;
       flex-direction: column;
       width: 100%;
-      height: 480px;
+      > * {
+        margin-bottom: 20px;
+        &:last-child {
+          margin-bottom: 0px;
+        }
+      }
     }
 
     .logo {
@@ -113,17 +117,15 @@
         }
 
         input[type=radio] + label {
+          .mxn-flex-center();
           flex-shrink: 1;
-          padding: 0 0 0 8px;
           width: 51%;
           height: 30px;
-          display: flex;
-          justify-content: center;
-          align-items: center;
           color: @field-active-color;
           font-size: 16px;
           line-height: 20px;
           border-radius: 7px;
+          padding: 0 0 0 8px;
           box-sizing: border-box;
         }
 
@@ -204,8 +206,12 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      height: 140px;
-
+      .form-control {
+        margin-bottom: 10px;
+        &:last-child {
+          margin-bottom: 0px;
+        }
+      }
     }
 
     .field {
@@ -303,9 +309,7 @@
     }
 
     .button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      .mxn-flex-center();
       width: 100%;
       height: 40px;
       border: none;
@@ -386,7 +390,10 @@
 
   .registration-terms-block {
     //display: flex;
-    align-self: flex-end;
+    //align-self: flex-end;
+    margin-top: 40px;
+    padding-bottom: 20px;
+    position: relative;
     text-align: center;
     font-size: @terms-font-size;
     line-height: @terms-line-height;

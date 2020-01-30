@@ -6,12 +6,14 @@ import {NotFoundComponent} from './not-found/not-found.component';
 import {PageContainerComponent} from './page-container/page-container.component';
 import {LoginPageComponent} from './login-page/login-page.component';
 import {AuthorizationGuard} from './_guards/authorization.guard';
+import {LoginCallbackPageComponent} from './login-callback-page/login-callback-page.component';
 
 const pagesRoutes = [
   { path: '', component: EditorPageComponent, canActivate: [AuthorizationGuard] },
   { path: 'edit/:id', component: EditorPageComponent, canActivate: [AuthorizationGuard]},
   { path: 'articles/:id', component: ArticlePageComponent },
-  { path: 'login', component: LoginPageComponent }
+  { path: 'login', component: LoginPageComponent },
+  { path: 'login/callback', component: LoginCallbackPageComponent }
 ];
 
 const routes: Routes = [

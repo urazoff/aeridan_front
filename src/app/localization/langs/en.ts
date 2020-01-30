@@ -56,5 +56,10 @@ export default {
   LOGIN_PAGE_TERMS: 'By clicking on the “%%0%%” button,<br>' +
     'You agree to the <a href="%%1%%">Terms</a>, ' +
     '<a href="%%2%%">Data Policy</a> and ' +
-    '<a href="%%3%%">Cookie Policy</a>.'
+    '<a href="%%3%%">Cookie Policy</a>.',
+  // AUTH ERRORS
+  AUTH_ERR_EMPTY_FIELD: 'Required field is empty.',
+  AUTH_ERR_NO_EMAIL: 'An error has occurred! «Public email» is not set in the Github profile settings.',
+  AUTH_ERR_LOGIN: 'An unexpected error has occurred! Try logging in later.',
+  AUTH_ERR_NO_USER: 'User is not found.',
 };

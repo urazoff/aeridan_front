@@ -19,27 +19,39 @@
 
             </div>
           </form>
+          <app-login-page-error-list [errors]="[message]"></app-login-page-error-list>
           <form [ngClass]="'auth-form'" [formGroup]="signUp" *ngIf="switch.get('authtype').value === 'registration'"
                 (ngSubmit)="register()" id="reg-form">
             <div [ngClass]="'fields'">
-              <input [ngClass]="'field icon login'" type="text"
-                     placeholder="{{lang.translate('LOGIN_PAGE_LOGIN_PLACEHOLDER')}}" formControlName="login"
-                     [title]="lang.translate('AUTH_RULE_LOGIN')">
-              <input [ngClass]="'field icon email'" type="email"
-                     placeholder="{{lang.translate('LOGIN_PAGE_EMAIL_PLACEHOLDER')}}" formControlName="email"
-                     [title]="lang.translate('AUTH_RULE_EMAIL')">
-              <div [ngClass]="'password-block'">
-                <input [ngClass]="'field icon password'"
-                       [type]="signUp.get('password-preview').value ? 'text':'password'"
-                       placeholder="{{lang.translate('LOGIN_PAGE_PASSWORD_PLACEHOLDER')}}"
-                       formControlName="password"
-                       [title]="lang.translate('AUTH_RULE_PASSWORD')">
-                <input type="checkbox" [ngClass]="'password-preview'" id="password-preview"
-                       formControlName="password-preview">
-                <label for="password-preview"></label>
+              <div [ngClass]="'form-control'">
+                <input [ngClass]="'field icon login'" type="text"
+                       placeholder="{{lang.translate('LOGIN_PAGE_LOGIN_PLACEHOLDER')}}" formControlName="login"
+                       [title]="lang.translate('AUTH_RULE_LOGIN')">
+                <app-login-page-error-list
+                  [errors]="getErrors(signUp.get('login'), 'AUTH_RULE_LOGIN')"></app-login-page-error-list>
+              </div>
+              <div [ngClass]="'form-control'">
+                <input [ngClass]="'field icon email'" type="email"
+                       placeholder="{{lang.translate('LOGIN_PAGE_EMAIL_PLACEHOLDER')}}" formControlName="email"
+                       [title]="lang.translate('AUTH_RULE_EMAIL')">
+                <app-login-page-error-list
+                  [errors]="getErrors(signUp.get('email'), 'AUTH_RULE_EMAIL')"></app-login-page-error-list>
+              </div>
+              <div [ngClass]="'form-control'">
+                <div [ngClass]="'password-block'">
+                  <input [ngClass]="'field icon password'"
+                         [type]="signUp.get('password-preview').value ? 'text':'password'"
+                         placeholder="{{lang.translate('LOGIN_PAGE_PASSWORD_PLACEHOLDER')}}"
+                         formControlName="password"
+                         [title]="lang.translate('AUTH_RULE_PASSWORD')">
+                  <input type="checkbox" [ngClass]="'password-preview'" id="password-preview"
+                         formControlName="password-preview">
+                  <label for="password-preview"></label>
+                </div>
+                <app-login-page-error-list
+                  [errors]="getErrors(signUp.get('password'), 'AUTH_RULE_PASSWORD')"></app-login-page-error-list>
               </div>
             </div>
-
           </form>
 
           <input type="submit" form="reg-form" [ngClass]="{
@@ -50,26 +62,32 @@
           <form [ngClass]="'auth-form'" [formGroup]="signIn" *ngIf="switch.get('authtype').value === 'login'"
                 (ngSubmit)="login()">
             <div [ngClass]="'fields'">
-              <input [ngClass]="'field icon email'" type="email"
-                     placeholder="{{lang.translate('LOGIN_PAGE_EMAIL_PLACEHOLDER')}}" formControlName="email"
-                     [title]="lang.translate('AUTH_RULE_EMAIL')">
-              <div [ngClass]="'password-block'">
-                <input [ngClass]="'field icon password'"
-                       [type]="signIn.get('password-preview').value ? 'text':'password'"
-                       placeholder="{{lang.translate('LOGIN_PAGE_PASSWORD_PLACEHOLDER')}}"
-                       formControlName="password"
-                       [title]="lang.translate('AUTH_RULE_PASSWORD')">
-                <input type="checkbox" [ngClass]="'password-preview'" id="password-preview2"
-                       formControlName="password-preview">
-                <label for="password-preview2"></label>
+              <div [ngClass]="'form-control'">
+                <input [ngClass]="'field icon email'" type="email"
+                       placeholder="{{lang.translate('LOGIN_PAGE_EMAIL_PLACEHOLDER')}}" formControlName="email"
+                       [title]="lang.translate('AUTH_RULE_EMAIL')">
               </div>
-              <input [ngClass]="'remember'" type="checkbox" id="login-remember-me" formControlName="remember">
-              <label for="login-remember-me">
-                <div [ngClass]="'background'">
-                  <div [ngClass]="'circle'"></div>
+              <div [ngClass]="'form-control'">
+                <div [ngClass]="'password-block'">
+                  <input [ngClass]="'field icon password'"
+                         [type]="signIn.get('password-preview').value ? 'text':'password'"
+                         placeholder="{{lang.translate('LOGIN_PAGE_PASSWORD_PLACEHOLDER')}}"
+                         formControlName="password"
+                         [title]="lang.translate('AUTH_RULE_PASSWORD')">
+                  <input type="checkbox" [ngClass]="'password-preview'" id="password-preview2"
+                         formControlName="password-preview">
+                  <label for="password-preview2"></label>
                 </div>
-                {{lang.translate('LOGIN_PAGE_REMEMBER_ME')}}
-              </label>
+              </div>
+              <div [ngClass]="'form-control'">
+                <input [ngClass]="'remember'" type="checkbox" id="login-remember-me" formControlName="remember">
+                <label for="login-remember-me">
+                  <div [ngClass]="'background'">
+                    <div [ngClass]="'circle'"></div>
+                  </div>
+                  {{lang.translate('LOGIN_PAGE_REMEMBER_ME')}}
+                </label>
+              </div>
             </div>
           </form>
 
@@ -89,7 +107,8 @@
               <div [ngClass]="'facebook login-method'"></div>
               <div [ngClass]="'google login-method'"></div>
               <div [ngClass]="'vk login-method'"></div>
-              <div [ngClass]="'github login-method'" (click)="openAuthWindow('https://dilshod.xyz/api/v1/github', 'Github')"></div>
+              <div [ngClass]="'github login-method'"
+                   (click)="openAuthWindow('https://dilshod.xyz/api/v1/github', 'Github')"></div>
             </div>
           </div>
         </div>
