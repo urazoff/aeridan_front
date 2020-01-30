@@ -19,7 +19,7 @@
 
             </div>
           </form>
-          <app-login-page-error-list [errors]="[message]"></app-login-page-error-list>
+          <app-login-page-error-list [errors]="[message]" *ngIf="message"></app-login-page-error-list>
           <form [ngClass]="'auth-form'" [formGroup]="signUp" *ngIf="switch.get('authtype').value === 'registration'"
                 (ngSubmit)="register()" id="reg-form">
             <div [ngClass]="'fields'">

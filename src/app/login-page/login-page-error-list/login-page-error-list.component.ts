@@ -7,7 +7,7 @@ import {LanguageService} from '../../localization/language.service';
   styleUrls: ['./login-page-error-list.component.less']
 })
 export class LoginPageErrorListComponent implements OnInit {
-  @Input() errors: Array<string>;
+  @Input() errors: Array<string> = [];
 
   constructor(public lang: LanguageService) {
     this.errors = this.errors.filter((value) => value.length > 0);
