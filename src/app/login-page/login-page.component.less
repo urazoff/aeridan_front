@@ -55,6 +55,7 @@
     align-items: center;
     width: 100%;
     flex-grow: 1;
+    flex-shrink: 0;
 
     .center-block {
       display: flex;
@@ -378,6 +379,9 @@
     }
   }
   @media screen and (max-device-width: 576px) {
+    .page-container {
+      top: 80px;
+    }
     .main-block {
       width: calc(100% - 40px);
     }
