@@ -12,7 +12,7 @@ export class NavigatorService {
 
   to(url, navExtras: object = {}) {
     this.router.navigate(
-      [`/${this.lang.userLang}${url}`],
+      [`/${this.lang.getUserLang()}${url}`],
       navExtras
     );
   }

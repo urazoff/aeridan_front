@@ -5,3 +5,9 @@ export interface IUser {
   email: string;
   fullName: string;
 }
+
+export interface IUserShort {
+  id: string;
+  email: string;
+  fullName: string;
+}

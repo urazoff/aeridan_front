@@ -201,7 +201,7 @@ export class EditorComponent implements OnInit {
       });
     }).then((data: IArticle) => {
       this.router.navigate(
-        [`/${this.lang.userLang}/articles/${data.id}`],
+        [`/${this.lang.getUserLang()}/articles/${data.id}`],
       );
     }).catch((error: Error) => {
       console.log('Saving failed', error);
@@ -236,7 +236,7 @@ export class EditorComponent implements OnInit {
       });
     }).then((data: IArticle) => {
       this.router.navigate(
-        [`/${this.lang.userLang}/articles/${data.id}`],
+        [`/${this.lang.getUserLang()}/articles/${data.id}`],
       );
     }).catch((error: Error) => {
       console.log('Saving failed', error);

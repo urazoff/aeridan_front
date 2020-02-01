@@ -1,0 +1,55 @@
+@import "../_less/mixins/animation";
+
+@logo-mobile-light-url: url("/assets/logo/logo.light.mobile.svg");
+@logo-mobile-dark-url: url("/assets/logo/logo.dark.mobile.svg");
+
+
+.mxn-theme(@logo-url) {
+  .panel {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    padding: 0px 10px;
+    justify-content: space-between;
+
+    .left {
+      .logo {
+        width: 108px;
+        height: 40px;
+        background: @logo-url;
+        .mxn-transition(background 0.15s ease-in-out);
+      }
+    }
+
+    .right {
+      display: flex;
+      height: 40px;
+      align-items: center;
+      > * {
+        margin: 8px;
+      }
+    }
+
+  }
+  @media screen and (min-device-width: 576px) {
+    .panel {
+      .left {
+        .logo {
+          display: none;
+        }
+      }
+    }
+  }
+  @media screen and (max-device-width: 576px) {
+    .panel {
+      padding: 10px 20px 0 20px;
+    }
+  }
+}
+
+:host-context(.light) {
+  .mxn-theme(@logo-mobile-light-url);
+}
+:host-context(.dark) {
+  .mxn-theme(@logo-mobile-dark-url);
+}

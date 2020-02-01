@@ -1,2 +1,3 @@
-<input [ngClass]="'button'" type="checkbox" id="change-theme-button" (change)="change.emit($event.target.value)">
-<label for="change-theme-button"></label>
+<div [ngClass]="theme.getTheme()">
+  <div [ngClass]="'button'" (click)="changeTheme()"></div>
+</div>

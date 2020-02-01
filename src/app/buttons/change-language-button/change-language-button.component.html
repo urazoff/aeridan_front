@@ -1,2 +1,3 @@
-<input [ngClass]="'button'" type="checkbox" id="change-language-button" (change)="change.emit($event.target.value)">
-<label for="change-language-button"></label>
+<div [ngClass]="theme.getTheme()">
+  <div [ngClass]="'button'" (click)="changeLanguage()"></div>
+</div>

@@ -41,7 +41,7 @@ export class ArticlePageComponent implements OnInit {
 
   navigateToEdit() {
     this.router.navigate(
-      [`/${this.lang.userLang}/edit/${this.id}`],
+      [`/${this.lang.getUserLang()}/edit/${this.id}`],
     );
   }
 

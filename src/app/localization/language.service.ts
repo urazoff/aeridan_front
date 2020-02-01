@@ -7,15 +7,13 @@ import en from './langs/en';
   providedIn: 'root'
 })
 export class LanguageService {
-  userLang: any;
   availableLangs: Array<string>;
   dictionary: object;
   defaultLang = 'en';
 
   constructor(private http: HttpClient) {
     this.availableLangs = ['ru', 'en'];
-    this.userLang = this.defaultLang;
-    this.dictionary = this.getDictionary(this.userLang);
+    this.dictionary = this.getDictionary(this.defaultLang);
   }
 
   get languages() {
@@ -29,22 +27,26 @@ export class LanguageService {
     return this.languages[lang];
   }
 
-  public getUserLang() {
-    for (const lang of navigator.languages) {
-      if (this.availableLangs.indexOf(lang) !== -1) {
-        return lang;
+  public getUserLang(): string {
+    if (!localStorage.getItem('language')) {
+      for (const lang of navigator.languages) {
+        if (this.availableLangs.indexOf(lang) !== -1) {
+          return lang;
+        }
       }
+      return this.defaultLang;
+    } else {
+      return localStorage.getItem('language');
     }
-    return this.defaultLang;
   }
 
   public setUserLang(lang) {
     if (this.availableLangs.indexOf(lang) !== -1) {
-      this.userLang = lang;
+      localStorage.setItem('language', lang);
     } else {
-      this.userLang = this.defaultLang;
+      localStorage.setItem('language', this.defaultLang);
     }
-    this.dictionary = this.getDictionary(this.userLang);
+    this.dictionary = this.getDictionary(this.getUserLang());
   }
 
   translate(word: string, ...additional: Array<string>) {

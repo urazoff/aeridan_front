@@ -7,6 +7,8 @@ import {Subscription} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthorizationService} from '../_requests/authorization.service';
 import {NavigatorService} from '../_services/navigator.service';
+import {IAuthLoginRequestAnswer} from '../_interfaces/requests/IAuthLoginRequestAnswer';
+import {ThemeService} from '../_services/theme.service';
 
 @Component({
   selector: 'app-login-page',
@@ -22,14 +24,14 @@ export class LoginPageComponent implements OnInit {
   message: string;
 
   constructor(public lang: LanguageService, title: TitleGeneratorService, private route: ActivatedRoute, public auth: AuthorizationService,
-              public nav: NavigatorService) {
+              public nav: NavigatorService, public theme: ThemeService) {
     this.switch = new FormGroup({
       authtype: new FormControl('login')
     });
     const loginValidator = Validators.pattern('[^\\s]{2,} [^\\s]{2,}');
     const passwordValidator = Validators.pattern(
       '(?=^.{8,}$)((?=.*\\d)|(?=.*\\W+))(?![.\\n])(?=.*[A-Z])(?=.*[a-z]).*$');
-    const emailValidator =  Validators.pattern('^[-\\w.]+@([A-z0-9][-A-z0-9]+\\.)+[A-z]{2,4}$');
+    const emailValidator = Validators.pattern('^[-\\w.]+@([A-z0-9][-A-z0-9]+\\.)+[A-z]{2,4}$');
     this.signUp = new FormGroup({
       login: new FormControl('', [Validators.required, loginValidator]),
       email: new FormControl('', [Validators.required, emailValidator]),
@@ -67,14 +69,21 @@ export class LoginPageComponent implements OnInit {
 
   login() {
     if (this.signIn.valid) {
-      this.auth.login(this.signIn.get('email').value, this.signIn.get('password').value, this.signIn.get('remember').value);
-      this.nav.toHref(this.redirectUrl);
+      this.auth.login(this.signIn.get('email').value, this.signIn.get('password').value, this.signIn.get('remember').value)
+        .then((data: IAuthLoginRequestAnswer) => {
+          if (data.user !== false) {
+            this.nav.toHref(this.redirectUrl);
+          } else {
+            this.message = data.message;
+          }
+        });
     }
   }
 
   register() {
     if (this.signUp.valid) {
       this.auth.register(this.signUp.get('email').value, this.signUp.get('login').value, this.signUp.get('password').value);
+
       this.nav.toHref(this.redirectUrl);
     }
   }

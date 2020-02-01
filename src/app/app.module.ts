@@ -37,6 +37,7 @@ import { ChangeThemeButtonComponent } from './buttons/change-theme-button/change
 import { ChangeLanguageButtonComponent } from './buttons/change-language-button/change-language-button.component';
 import { LoginCallbackPageComponent } from './login-callback-page/login-callback-page.component';
 import { LoginPageErrorListComponent } from './login-page/login-page-error-list/login-page-error-list.component';
+import { PanelTopComponent } from './panel-top/panel-top.component';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { LoginPageErrorListComponent } from './login-page/login-page-error-list/
     ChangeLanguageButtonComponent,
     LoginCallbackPageComponent,
     LoginPageErrorListComponent,
+    PanelTopComponent,
   ],
   imports: [
     BrowserModule,

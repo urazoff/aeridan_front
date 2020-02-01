@@ -1,4 +1,5 @@
 @import "./editor-variables.less";
+@import "./_less/mixins/animation";
 
 .editor-block {
     width: 1000px;
@@ -9,10 +10,17 @@
 }
 .page-center {
     display: flex;
-    
+
     justify-content: center;
     width: 100%;
 }
 .editor-width {
     width: 100%;
 }
+input {
+  outline: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-appearance: none;
+}
+
+

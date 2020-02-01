@@ -1,16 +1,26 @@
-.button {
-  display: none;
+@import "../../_less/mixins/animation";
+
+@icon-inactive-light: url('/assets/icons/buttons/change-language/change-language.inactive.light.svg');
+@icon-active-light: url('/assets/icons/buttons/change-language/change-language.active.light.svg');
+@icon-inactive-dark: url('/assets/icons/buttons/change-language/change-language.inactive.dark.svg');
+@icon-active-dark: url('/assets/icons/buttons/change-language/change-language.active.dark.svg');
+
+.mxn-theme(@icon-inactive, @icon-active) {
+  .button {
+    height: 24px;
+    width: 24px;
+    background: @icon-inactive;
+    cursor: pointer;
+    .mxn-transition(background 0.15s ease-in-out);
+    &:hover {
+      background: @icon-active;
+    }
+  }
 }
-.button + label {
-  background: url('/assets/icons/buttons/change-theme/change-theme.inactive.light.svg');
-  cursor: pointer;
-  &:checked {
-    background: url('/assets/icons/buttons/change-theme/change-theme.inactive.dark.svg');
-  }
-  &:hover {
-    background: url('/assets/icons/buttons/change-theme/change-theme.active.light.svg');
-  }
-  &:checked:hover {
-    background: url('/assets/icons/buttons/change-theme/change-theme.active.dark.svg');
-  }
+
+.light {
+  .mxn-theme(@icon-inactive-light, @icon-active-light);
+}
+.dark {
+  .mxn-theme(@icon-inactive-dark, @icon-active-dark);
 }

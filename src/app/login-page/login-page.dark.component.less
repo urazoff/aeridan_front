@@ -1,0 +1,40 @@
+@import "../_less/mixins/animation";
+@import "../_less/mixins/flex";
+@import "./login-page.component.less";
+
+@logo-url: url("/assets/logo/logo.dark.svg");
+// auth icons
+@login-inactive-icon-url: url("/assets/icons/auth/login.inactive.dark.svg");
+@login-active-icon-url: url("/assets/icons/auth/login.active.dark.svg");
+@login-invalid-icon-url: url("/assets/icons/auth/login.invalid.dark.svg");
+@email-inactive-icon-url: url("/assets/icons/auth/email.inactive.dark.svg");
+@email-active-icon-url: url("/assets/icons/auth/email.active.dark.svg");
+@email-invalid-icon-url: url("/assets/icons/auth/email.invalid.dark.svg");
+@password-inactive-icon-url: url("/assets/icons/auth/password.inactive.dark.svg");
+@password-active-icon-url: url("/assets/icons/auth/password.active.dark.svg");
+@password-invalid-icon-url: url("/assets/icons/auth/password.invalid.dark.svg");
+@password-preview-inactive-url: url("/assets/icons/auth/password-preview.inactive.dark.svg");
+@password-preview-active-url: url("/assets/icons/auth/password-preview.active.dark.svg");
+// login methods' icons
+@facebook-icon-url: url("/assets/icons/login-methods/facebook.svg");
+@google-icon-url: url("/assets/icons/login-methods/google.svg");
+@vk-icon-url: url("/assets/icons/login-methods/vk.svg");
+@github-icon-url: url("/assets/icons/login-methods/github.dark.svg");
+
+@field-inactive-color: #b2a59f;
+@field-active-color: #EDDED3;
+@field-background-color: #281A11;
+@button-background-color: #A83E40;
+
+@switch-background-color: rgba(120, 120, 128, 0.16);
+@switch-circle-background-color: white;
+@switch-background-color-checked: #C16C86;
+@another-auth-line-label-color: #EDDED3;
+@button-text-color: white;
+@terms-color: #EDDED3;
+
+:host-context(.dark) {
+  .mxn-theme();
+}
+
+
